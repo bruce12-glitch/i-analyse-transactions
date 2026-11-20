@@ -59,7 +59,7 @@ export class ExploreOverlay {
     this.underLayerEl.id = 'u-explore';
     this.underLayerEl.style.cssText =
       'position:absolute;inset:0;visibility:hidden;pointer-events:none;';
-    this.underLayerEl.innerHTML = `<div class="num gh" style="position:absolute;right:30px;top:600px;font-size:520px;color:var(--ghost, #1C1C1B)"><sup id="exghost-sup" style="font-size:60px;margin-top:0.5em">US$</sup><span id="exghost">0</span></div>`;
+    this.underLayerEl.innerHTML = `<div class="num gh" style="position:absolute;right:30px;top:600px;font-size:520px;color:var(--ghost, #141D2F)"><sup id="exghost-sup" style="font-size:60px;margin-top:0.5em">US$</sup><span id="exghost">0</span></div>`;
     underParent.appendChild(this.underLayerEl);
 
     this.overLayerEl = document.createElement('div');
@@ -75,7 +75,7 @@ export class ExploreOverlay {
       tip = document.createElement('div');
       tip.id = 'tip';
       tip.style.cssText =
-        'position:absolute;left:0;top:0;background:var(--bone, #F3F0E6);color:var(--ink, #111111);font:500 13px/1.45 "JetBrains Mono",monospace;letter-spacing:0.06em;text-transform:uppercase;padding:10px 13px;pointer-events:none;opacity:0;white-space:nowrap;border:1.5px solid #111;z-index:30;';
+        'position:absolute;left:0;top:0;background:var(--bone, #F8FAFC);color:var(--ink, #0B111E);font:500 13px/1.45 "JetBrains Mono",monospace;letter-spacing:0.06em;text-transform:uppercase;padding:10px 13px;pointer-events:none;opacity:0;white-space:nowrap;border:1.5px solid var(--ink, #0B111E);z-index:30;';
       chromeParent.appendChild(tip);
     }
     this.tipEl = tip;
@@ -88,7 +88,7 @@ export class ExploreOverlay {
       pill.id = 'pill';
       pill.dataset.testid = 'drag-pill';
       pill.style.cssText =
-        'position:absolute;left:0;top:0;background:var(--c1, #F4F03A);color:var(--ink, #111111);padding:10px 14px 9px;pointer-events:none;opacity:0;white-space:nowrap;border:1.5px solid #111;z-index:30;';
+        'position:absolute;left:0;top:0;background:var(--c1, #F0C454);color:var(--ink, #0B111E);padding:10px 14px 9px;pointer-events:none;opacity:0;white-space:nowrap;border:1.5px solid var(--ink, #0B111E);z-index:30;';
       pill.innerHTML = `<div class="num" style="font-size:40px"><sup id="pillsup">US$</sup><span id="pillv">0</span></div><div class="lab" id="pilll" style="font-size:11px;position:static;margin-top:4px"></div>`;
       chromeParent.appendChild(pill);
     }
@@ -120,7 +120,7 @@ export class ExploreOverlay {
 
   private buildDom(): void {
     const chipsHtml = [
-      `<button type="button" class="chip mag" data-cat="" aria-pressed="true" data-testid="lens-chip-all"><i style="background:var(--bone);outline:1px solid #111"></i>All</button>`,
+      `<button type="button" class="chip mag" data-cat="" aria-pressed="true" data-testid="lens-chip-all"><i style="background:var(--bone);outline:1px solid var(--ink)"></i>All</button>`,
       ...DISPLAY_CATEGORIES.map(
         (c) =>
           `<button type="button" class="chip mag" data-cat="${c.key}" aria-pressed="false" data-testid="lens-chip-${c.key.replace(/\s+/g, '-')}"><i style="background:${c.color}"></i>${c.label}</button>`
@@ -147,7 +147,7 @@ export class ExploreOverlay {
       <div class="blk later" data-ax="b" id="exsel" data-testid="explore-selection-block" style="position:absolute;left:1220px;top:720px;width:636px;height:296px;background:var(--c1);color:var(--ink);transform-origin:50% 100%;transform:scaleY(0)">
         <div class="lab tx" style="position:absolute;left:28px;top:22px;right:28px;display:flex;justify-content:space-between;align-items:center">
           <span id="exsel-title">SELECTION</span>
-          <button type="button" id="exsel-receipts-btn" data-testid="selection-receipts-btn" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 12px;background:#111;color:#F3F0E6;cursor:pointer;pointer-events:auto;">Receipts</button>
+          <button type="button" id="exsel-receipts-btn" data-testid="selection-receipts-btn" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:6px 12px;background:var(--ink);color:var(--bone);cursor:pointer;pointer-events:auto;">Receipts</button>
         </div>
         <div class="num tx" style="position:absolute;left:22px;top:66px;font-size:120px"><sup id="exselsup">US$</sup><span id="exselv">0</span></div>
         <div class="lab tx" id="exsell" style="position:absolute;left:28px;bottom:22px;font-size:12px"></div>
@@ -214,7 +214,7 @@ export class ExploreOverlay {
   private safeCssColor(val: unknown): string {
     const s = String(val ?? '').trim();
     if (/^#[0-9a-fA-F]{3,8}$/.test(s) || /^var\(--[A-Za-z0-9_-]+\)$/.test(s)) return s;
-    return '#F4F03A';
+    return '#F0C454';
   }
 
   private getDisplayCategoryLabel(cat: Category): string {
@@ -246,7 +246,7 @@ export class ExploreOverlay {
       const cat = (btn.dataset.cat ?? '') as Category | '';
       if (!cat) continue;
       const spec = DISPLAY_CATEGORIES.find((c) => c.key === cat);
-      const color = spec?.color ?? '#F4F03A';
+      const color = spec?.color ?? '#F0C454';
       const label = this.getDisplayCategoryLabel(cat);
       btn.innerHTML = `<i style="background:${this.safeCssColor(color)}"></i>${this.escapeHtml(label)}`;
     }

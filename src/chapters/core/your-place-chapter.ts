@@ -95,20 +95,20 @@ export class YourPlaceChapter implements ChapterModule {
       if (visitDates.has(d.date) && this.anchorDayIdx === 0) {
         this.anchorDayIdx = idx;
       }
-      const fill = visitDates.has(d.date) ? '#F4F03A' : '#3A3A38';
+      const fill = visitDates.has(d.date) ? '#F0C454' : '#26334D';
       dotsSvg += `<rect class="pd" x="${d.week_index * 10.2}" y="${d.weekday * 10.2}" width="7.8" height="7.8" fill="${fill}"/>`;
     });
 
     let moSvg = '';
     monthlyCounts.forEach((v, m) => {
       const h = (v / maxMonth) * 62;
-      moSvg += `<rect class="pb" x="${m * 26}" y="${(70 - h).toFixed(1)}" width="18" height="${h.toFixed(1)}" fill="#F4F03A"/><text x="${m * 26 + 9}" y="86" fill="#F3F0E6" font-family="JetBrains Mono" font-size="9" text-anchor="middle">${MONTH_INITIALS[m]}</text>`;
+      moSvg += `<rect class="pb" x="${m * 26}" y="${(70 - h).toFixed(1)}" width="18" height="${h.toFixed(1)}" fill="#F0C454"/><text x="${m * 26 + 9}" y="86" fill="#F8FAFC" font-family="JetBrains Mono" font-size="9" text-anchor="middle">${MONTH_INITIALS[m]}</text>`;
     });
 
     let wdSvg = '';
     weekdayCounts.forEach((v, k) => {
       const h = (v / maxWeekday) * 185;
-      wdSvg += `<rect class="pb" x="${k * 40}" y="${(200 - h).toFixed(1)}" width="30" height="${h.toFixed(1)}" fill="#111111"/><text x="${k * 40 + 15}" y="222" font-family="JetBrains Mono" font-size="13" text-anchor="middle" fill="#111111">${DOW_INITIALS[k]}</text>`;
+      wdSvg += `<rect class="pb" x="${k * 40}" y="${(200 - h).toFixed(1)}" width="30" height="${h.toFixed(1)}" fill="#0B111E"/><text x="${k * 40 + 15}" y="222" font-family="JetBrains Mono" font-size="13" text-anchor="middle" fill="#0B111E">${DOW_INITIALS[k]}</text>`;
     });
 
     const headlineFormatted =
@@ -141,14 +141,14 @@ export class YourPlaceChapter implements ChapterModule {
         <div class="ch-header-stack" style="position:absolute;left:48px;right:48px;top:32px;bottom:208px;display:flex;flex-direction:column;justify-content:flex-start;gap:16px;overflow:hidden">
           <div class="lab tx">${this.escapeHtml(ctx.chapter.params.kicker ?? '03 · YOUR PLACE')}</div>
           <div class="split tx" data-testid="chapter-headline" style="font-size:${headlineFontSize}px;font-weight:300;letter-spacing:-0.045em;line-height:1.04">${headlineFormatted}</div>
-          <div class="tx" data-testid="chapter-body" style="font-size:17px;line-height:1.35;background:#111111;color:#F3F0E6;border-left:4px solid #FF5A14;padding:12px 18px">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F4F03A;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
+          <div class="tx" data-testid="chapter-body" style="font-size:17px;line-height:1.35;background:#0B111E;color:#F8FAFC;border-left:4px solid #FF7A5C;padding:12px 18px">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F0C454;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
         </div>
         <div class="blk" data-ax="b" id="pK" style="position:absolute;left:48px;right:48px;bottom:28px;height:170px;background:var(--ink);color:var(--bone);transform-origin:50% 100%">
           <div class="lab tx" style="position:absolute;left:22px;top:18px;font-size:12px">${calTitle}</div>
           <div class="lab tx" style="position:absolute;left:580px;top:18px;font-size:12px">${moTitle}</div>
           <svg class="dt" style="position:absolute;left:22px;top:54px" width="545" height="78">${dotsSvg}</svg>
           <svg class="dt" style="position:absolute;left:580px;top:48px" width="312" height="92">${moSvg}</svg>
-          <button type="button" class="receipt-trigger dt ia" data-fact-id="${this.escapeHtml(visitsFact.id)}" style="position:absolute;right:22px;top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;padding:8px 12px;border:1.5px solid #F3F0E6;background:#111;color:#F3F0E6;cursor:pointer;pointer-events:auto;">Receipts (${visitsFact.txn_ids.length})</button>
+          <button type="button" class="receipt-trigger dt ia" data-fact-id="${this.escapeHtml(visitsFact.id)}" style="position:absolute;right:22px;top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;padding:8px 12px;border:1.5px solid #F8FAFC;background:var(--ink);color:#F8FAFC;cursor:pointer;pointer-events:auto;">Receipts (${visitsFact.txn_ids.length})</button>
         </div>
       </div>
       <div class="blk ia" data-ax="b" id="pO" data-testid="your-place-visits-block" style="position:absolute;left:1148px;top:68px;width:708px;height:492px;background:var(--c4);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
@@ -159,7 +159,7 @@ export class YourPlaceChapter implements ChapterModule {
       <div class="blk ia" data-ax="b" id="pP" data-testid="your-place-spend-block" style="position:absolute;left:1148px;top:576px;width:346px;height:436px;background:var(--c2);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
         <div class="lab tx" style="position:absolute;left:32px;top:32px;right:24px;display:flex;justify-content:space-between;align-items:center">
           <span>${this.escapeHtml(spendLabel)}</span>
-          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(spendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;flex-shrink:0">Receipts</button>
+          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(spendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;flex-shrink:0">Receipts</button>
         </div>
         <div class="num tx" style="position:absolute;left:28px;bottom:92px;font-size:88px"><sup>${currencySup}</sup><span class="od" data-v="${this.escapeHtml(spendRawDigits)}">${this.escapeHtml(spendRawDigits)}</span></div>
         <div class="lab dt" style="position:absolute;left:32px;bottom:32px;font-size:12px">${this.escapeHtml(merchantName)} · ${isB2B ? 'ledger receipts' : 'verified receipts'}</div>

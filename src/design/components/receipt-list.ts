@@ -8,7 +8,7 @@
 
 import type { Transaction } from '../../../contracts/data.js';
 import { formatMoneyMinor } from '../../../contracts/data.js';
-import { CATEGORY_META } from '../palette.js';
+import { CATEGORY_META, CORE_COLORS } from '../palette.js';
 import { MONTH_NAMES_UPPER } from '../tokens.js';
 
 export interface ReceiptListOptions {
@@ -53,7 +53,7 @@ export function renderReceiptListHtml(
     .map((tx) => {
       const meta = CATEGORY_META[tx.category];
       const swatch = showSwatch
-        ? `<i class="sw" style="background:${meta?.color ?? '#F4F03A'}"></i>`
+        ? `<i class="sw" style="background:${meta?.color ?? CORE_COLORS.solar}"></i>`
         : '';
       const dateCol = showDate ? `<span class="dt-col">${escapeHtml(formatShortIsoDate(tx.date))}</span>` : '';
       const amtFormatted = formatMoneyMinor(tx.amount_minor, {
@@ -77,7 +77,7 @@ export function renderReceiptListHtml(
       showCents: true,
       prefix: 'US$',
     });
-    totalHtml = `<div class="${rowCls}" style="border-top:1.5px solid #111;margin-top:8px;padding-top:12px;font-weight:600"><span>TOTAL</span><span class="ld" style="opacity:0"></span><span>${totalFormatted}</span></div>`;
+    totalHtml = `<div class="${rowCls}" style="border-top:1.5px solid var(--ink);margin-top:8px;padding-top:12px;font-weight:600"><span>TOTAL</span><span class="ld" style="opacity:0"></span><span>${totalFormatted}</span></div>`;
   }
 
   return rowsHtml + moreHtml + totalHtml;
@@ -98,7 +98,7 @@ export class ReceiptsDrawer {
     this.el.className = 'receipts-drawer ia';
     this.el.setAttribute('aria-hidden', 'true');
     this.el.innerHTML = `
-      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #111;padding-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--ink);padding-bottom:14px">
         <div>
           <div class="lab" style="position:static;font-size:11px;opacity:0.7">TRACEABLE RECEIPTS</div>
           <div class="drawer-title" style="font-size:26px;font-weight:400;letter-spacing:-0.02em;margin-top:2px">Receipts</div>
@@ -107,7 +107,7 @@ export class ReceiptsDrawer {
       </div>
       <div class="lab drawer-count" style="position:static;font-size:11px;margin-top:12px">0 TRANSACTIONS</div>
       <div class="drawer-list"></div>
-      <div class="rc drawer-total" style="border-top:2px solid #111;margin-top:12px;padding-top:14px;font-weight:600;font-size:17px"></div>
+      <div class="rc drawer-total" style="border-top:2px solid var(--ink);margin-top:12px;padding-top:14px;font-weight:600;font-size:17px"></div>
     `;
     container.appendChild(this.el);
 

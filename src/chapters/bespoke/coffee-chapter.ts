@@ -394,7 +394,7 @@ export class CoffeeChapter implements ChapterModule {
 
     const badgeDisplayStyle = badgeText ? 'inline-flex' : 'none';
     const takeawayPrefixHtml = takeawayPrefix
-      ? `<span style="font-family:'JetBrains Mono',monospace;font-size:${isPhone ? '9px' : '10.5px'};font-weight:700;letter-spacing:${isPhone ? '0.1em' : '0.12em'};color:#F4F03A;text-transform:uppercase;margin-right:${isPhone ? '6px' : '8px'};">${takeawayPrefix}</span>`
+      ? `<span style="font-family:'JetBrains Mono',monospace;font-size:${isPhone ? '9px' : '10.5px'};font-weight:700;letter-spacing:${isPhone ? '0.1em' : '0.12em'};color:#F0C454;text-transform:uppercase;margin-right:${isPhone ? '6px' : '8px'};">${takeawayPrefix}</span>`
       : '';
     const countNounCap = isB2B ? 'SETTLEMENTS' : 'VISITS';
     const spendSuffixCap = isB2B ? 'OUTFLOW' : 'SPENT';
@@ -407,21 +407,21 @@ export class CoffeeChapter implements ChapterModule {
       container.innerHTML = `
         <div class="coffee-phone-stage" data-testid="coffee-chapter-stage" data-viewport="phone" style="position:relative;width:390px;height:844px;overflow:hidden;">
           <div class="tx" style="position:absolute;left:16px;top:36px;right:16px;display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <span class="badge-bespoke" data-testid="bespoke-badge" style="display:${badgeDisplayStyle};align-items:center;gap:6px;padding:4px 8px;background:#111111;color:#F4F03A;border:1.5px solid #F4F03A;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;">${this.escapeHtml(badgeText)}</span>
-            <span class="lab" style="position:static;font-size:10px;color:#C9C5BA;">${this.escapeHtml(kickerText)}</span>
+            <span class="badge-bespoke" data-testid="bespoke-badge" style="display:${badgeDisplayStyle};align-items:center;gap:6px;padding:4px 8px;background:#0B111E;color:#F0C454;border:1.5px solid #F0C454;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;">${this.escapeHtml(badgeText)}</span>
+            <span class="lab" style="position:static;font-size:10px;color:#94A3B8;">${this.escapeHtml(kickerText)}</span>
           </div>
 
           <div class="ch-header-stack" style="left:16px;right:16px;top:60px;max-height:126px;gap:6px;">
             <div class="split tx" data-testid="chapter-headline" style="width:358px;font-size:24px;font-weight:300;letter-spacing:-0.04em;line-height:1.05;color:var(--bone);">${this.escapeHtml(headlineText)}</div>
-            <div class="tx" data-testid="chapter-body" style="width:358px;padding:6px 10px;background:#1C1C1B;border-left:3px solid #F4F03A;font-family:'Space Grotesk',sans-serif;font-size:11.5px;line-height:1.3;color:var(--bone);">
+            <div class="tx" data-testid="chapter-body" style="width:358px;padding:6px 10px;background:#141D2F;border-left:3px solid #F0C454;font-family:'Space Grotesk',sans-serif;font-size:11.5px;line-height:1.3;color:var(--bone);">
               ${takeawayPrefixHtml}${this.escapeHtml(bodyText)}
             </div>
           </div>
 
-          <div class="blk ia" data-ax="b" id="coffee-rivalry-blk" data-testid="coffee-rivalry-block" style="position:absolute;left:16px;top:194px;width:358px;height:242px;background:#1C1C1B;color:var(--bone);border:1.5px solid #3A3A38;transform-origin:50% 100%;pointer-events:auto;">
+          <div class="blk ia" data-ax="b" id="coffee-rivalry-blk" data-testid="coffee-rivalry-block" style="position:absolute;left:16px;top:194px;width:358px;height:242px;background:#141D2F;color:var(--bone);border:1.5px solid #26334D;transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:14px;top:10px;right:14px;font-size:9.5px;display:flex;justify-content:space-between;align-items:center;">
               <span>${isSam ? 'HEAD-TO-HEAD CAFÉ SPLIT &amp; 53×7 MATRIX' : 'COUNTERPARTY CADENCE &amp; 53×7 MATRIX'}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalVisitsFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 6px;border:1px solid #F4F03A;color:#F4F03A;background:#111;cursor:pointer;">Receipts (${totalVisitsFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalVisitsFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 6px;border:1px solid #F0C454;color:#F0C454;background:var(--ink);cursor:pointer;">Receipts (${totalVisitsFact.txn_ids.length})</button>
             </div>
             <div class="dt" style="position:absolute;left:14px;top:38px;width:330px;height:190px;">${rivalrySvg}</div>
           </div>
@@ -429,7 +429,7 @@ export class CoffeeChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="coffee-block-total-visits" style="position:absolute;left:16px;top:448px;width:174px;height:176px;background:var(--c1);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:12px;top:10px;right:10px;font-size:9px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blkTotalVisitsTitle}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalVisitsFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid #111;cursor:pointer;">Receipts (${totalVisitsFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalVisitsFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid var(--ink);cursor:pointer;">Receipts (${totalVisitsFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:12px;top:48px;font-size:52px;"><span class="od" data-v="${this.escapeHtml(totalVisitsNum.rawDigits)}">${this.escapeHtml(totalVisitsNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:12px;bottom:10px;font-size:8.5px;">${this.escapeHtml(merchantsCountFact.formatted)} ${entityPlural} · ${this.escapeHtml(streakDaysFact.formatted)}D STREAK</div>
@@ -438,16 +438,16 @@ export class CoffeeChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="coffee-block-top-cafe" style="position:absolute;left:200px;top:448px;width:174px;height:176px;background:var(--bone);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:12px;top:10px;right:10px;font-size:9px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blkTopTitle}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(topSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid #111;cursor:pointer;">Receipts (${topSpendFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(topSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid var(--ink);cursor:pointer;">Receipts (${topSpendFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:12px;top:48px;font-size:52px;"><span class="od" data-v="${this.escapeHtml(topVisitsNum.rawDigits)}">${this.escapeHtml(topVisitsNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:12px;bottom:10px;font-size:8.5px;">${countNounCap} · ${this.escapeHtml(topSpendFact.formatted)} ${spendSuffixCap}</div>
           </div>
 
-          <div class="blk ia" data-ax="b" data-testid="coffee-block-second-cafe" style="position:absolute;left:16px;top:636px;width:174px;height:176px;background:#FF4F1F;color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
+          <div class="blk ia" data-ax="b" data-testid="coffee-block-second-cafe" style="position:absolute;left:16px;top:636px;width:174px;height:176px;background:var(--c4);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:12px;top:10px;right:10px;font-size:9px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blkSecondTitle}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(secondSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid #111;cursor:pointer;">Receipts (${secondSpendFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(secondSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid var(--ink);cursor:pointer;">Receipts (${secondSpendFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:12px;top:48px;font-size:52px;"><span class="od" data-v="${this.escapeHtml(secondVisitsNum.rawDigits)}">${this.escapeHtml(secondVisitsNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:12px;bottom:10px;font-size:8.5px;">${countNounCap} · ${this.escapeHtml(secondSpendFact.formatted)} ${spendSuffixCap}</div>
@@ -456,7 +456,7 @@ export class CoffeeChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="coffee-block-total-spend" style="position:absolute;left:200px;top:636px;width:174px;height:176px;background:var(--c2);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:12px;top:10px;right:10px;font-size:9px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blkTotalSpendTitle}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid #111;cursor:pointer;">Receipts (${totalSpendFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid var(--ink);cursor:pointer;">Receipts (${totalSpendFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:12px;top:52px;font-size:42px;">${totalSpendNum.hasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(totalSpendNum.rawDigits)}">${this.escapeHtml(totalSpendNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:12px;bottom:10px;font-size:8.5px;">ACROSS ${this.escapeHtml(merchantsCountFact.formatted)} ${entityPlural}</div>
@@ -468,20 +468,20 @@ export class CoffeeChapter implements ChapterModule {
         <div class="coffee-desktop-stage" data-testid="coffee-chapter-stage" data-viewport="desktop" style="position:absolute;inset:0;">
           <div class="ch-header-stack" style="left:60px;top:64px;max-width:1030px;max-height:252px;">
             <div class="tx" style="display:flex;align-items:center;gap:16px;">
-              <span class="badge-bespoke" data-testid="bespoke-badge" style="display:${badgeDisplayStyle};align-items:center;gap:8px;padding:6px 12px;background:#111111;color:#F4F03A;border:1.5px solid #F4F03A;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;">${this.escapeHtml(badgeText)}</span>
-              <span class="lab" style="position:static;color:#C9C5BA;">${this.escapeHtml(kickerText)}</span>
+              <span class="badge-bespoke" data-testid="bespoke-badge" style="display:${badgeDisplayStyle};align-items:center;gap:8px;padding:6px 12px;background:#0B111E;color:#F0C454;border:1.5px solid #F0C454;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;">${this.escapeHtml(badgeText)}</span>
+              <span class="lab" style="position:static;color:#94A3B8;">${this.escapeHtml(kickerText)}</span>
             </div>
 
             <div class="split tx" data-testid="chapter-headline" style="font-size:58px;font-weight:300;letter-spacing:-0.04em;line-height:1.04;color:var(--bone);">${this.escapeHtml(headlineText)}</div>
-            <div class="tx" data-testid="chapter-body" style="padding:12px 18px;background:#1C1C1B;border:1px solid #3A3A38;border-left:4px solid #F4F03A;font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:400;line-height:1.35;color:var(--bone);">
+            <div class="tx" data-testid="chapter-body" style="padding:12px 18px;background:#141D2F;border:1px solid #26334D;border-left:4px solid #F0C454;font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:400;line-height:1.35;color:var(--bone);">
               ${takeawayPrefixHtml}${this.escapeHtml(bodyText)}
             </div>
           </div>
 
-          <div class="blk ia" data-ax="b" id="coffee-rivalry-blk" data-testid="coffee-rivalry-block" style="position:absolute;left:64px;top:330px;width:1040px;height:474px;background:#1C1C1B;color:var(--bone);border:1.5px solid #3A3A38;transform-origin:50% 100%;pointer-events:auto;">
+          <div class="blk ia" data-ax="b" id="coffee-rivalry-blk" data-testid="coffee-rivalry-block" style="position:absolute;left:64px;top:330px;width:1040px;height:474px;background:#141D2F;color:var(--bone);border:1.5px solid #26334D;transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:28px;top:20px;right:28px;display:flex;justify-content:space-between;align-items:center;">
               <span>${isSam ? `HEAD-TO-HEAD CAFÉ SPLIT BAR &amp; 53-WEEK DUAL-TRACK MATRIX · ${this.escapeHtml(topMerchantFact.formatted.toUpperCase())} VS ${this.escapeHtml(secondMerchantFact.formatted.toUpperCase())}` : `COUNTERPARTY CADENCE &amp; 53-WEEK DUAL-TRACK MATRIX · ${this.escapeHtml(topMerchantFact.formatted.toUpperCase())} VS ${this.escapeHtml(secondMerchantFact.formatted.toUpperCase())}`}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalVisitsFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:5px 10px;border:1.5px solid #F4F03A;background:#111111;color:#F4F03A;cursor:pointer;">Receipts (${totalVisitsFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalVisitsFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:5px 10px;border:1.5px solid #F0C454;background:#0B111E;color:#F0C454;cursor:pointer;">Receipts (${totalVisitsFact.txn_ids.length})</button>
             </div>
             <div class="dt" style="position:absolute;left:28px;top:60px;width:984px;height:392px;">${rivalrySvg}</div>
           </div>
@@ -489,7 +489,7 @@ export class CoffeeChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="coffee-block-total-visits" style="position:absolute;left:1128px;top:68px;width:356px;height:356px;background:var(--c1);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:26px;top:22px;right:22px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blkTotalVisitsTitle}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalVisitsFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;">Receipts (${totalVisitsFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalVisitsFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;">Receipts (${totalVisitsFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:22px;bottom:76px;font-size:128px;"><span class="od" data-v="${this.escapeHtml(totalVisitsNum.rawDigits)}">${this.escapeHtml(totalVisitsNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:26px;bottom:24px;right:22px;font-size:11px;">${this.escapeHtml(merchantsCountFact.formatted)} ${entityPlural} · ${this.escapeHtml(streakDaysFact.formatted)}-DAY LONGEST STREAK</div>
@@ -498,16 +498,16 @@ export class CoffeeChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="coffee-block-top-cafe" style="position:absolute;left:1500px;top:68px;width:356px;height:356px;background:var(--bone);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:26px;top:22px;right:22px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blkTopTitle}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(topSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;">Receipts (${topSpendFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(topSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;">Receipts (${topSpendFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:22px;bottom:84px;font-size:128px;"><span class="od" data-v="${this.escapeHtml(topVisitsNum.rawDigits)}">${this.escapeHtml(topVisitsNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:26px;bottom:24px;right:22px;font-size:11px;">${countNounCap} · ${this.escapeHtml(topSpendFact.formatted)} ${totalSpendSuffixCap}</div>
           </div>
 
-          <div class="blk ia" data-ax="b" data-testid="coffee-block-second-cafe" style="position:absolute;left:1128px;top:448px;width:356px;height:356px;background:#FF4F1F;color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
+          <div class="blk ia" data-ax="b" data-testid="coffee-block-second-cafe" style="position:absolute;left:1128px;top:448px;width:356px;height:356px;background:var(--c4);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:26px;top:22px;right:22px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blkSecondTitle}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(secondSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;">Receipts (${secondSpendFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(secondSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;">Receipts (${secondSpendFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:22px;bottom:84px;font-size:128px;"><span class="od" data-v="${this.escapeHtml(secondVisitsNum.rawDigits)}">${this.escapeHtml(secondVisitsNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:26px;bottom:24px;right:22px;font-size:11px;">${countNounCap} · ${this.escapeHtml(secondSpendFact.formatted)} ${spendSuffixCap}${isSam ? ' (HIGHER SPEND!)' : ''}</div>
@@ -516,7 +516,7 @@ export class CoffeeChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="coffee-block-total-spend" style="position:absolute;left:1500px;top:448px;width:356px;height:356px;background:var(--c2);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:26px;top:22px;right:22px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blkTotalSpendTitle}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;">Receipts (${totalSpendFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;">Receipts (${totalSpendFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:22px;bottom:84px;font-size:104px;">${totalSpendNum.hasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(totalSpendNum.rawDigits)}">${this.escapeHtml(totalSpendNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:26px;bottom:24px;right:22px;font-size:11px;">ACROSS ${this.escapeHtml(merchantsCountFact.formatted)} DISTINCT ${entityPlural}</div>
@@ -525,7 +525,7 @@ export class CoffeeChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="coffee-block-twist" style="position:absolute;left:1128px;top:824px;width:728px;height:180px;background:var(--lav);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:28px;top:20px;right:28px;display:flex;justify-content:space-between;align-items:center;">
               <span>${isSam ? 'THE RIVALRY TWIST · HABIT VS CHECK SIZE' : 'COUNTERPARTY CADENCE · FREQUENCY VS TICKET SIZE'}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(streakDaysFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 10px;background:#111111;color:#F3F0E6;cursor:pointer;">Streak Receipts (${streakDaysFact.txn_ids.length}) →</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(streakDaysFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 10px;background:#0B111E;color:#F8FAFC;cursor:pointer;">Streak Receipts (${streakDaysFact.txn_ids.length}) →</button>
             </div>
             <div class="tx" style="position:absolute;left:28px;top:60px;right:28px;display:flex;justify-content:space-between;align-items:baseline;">
               <div style="font-size:21px;font-weight:400;max-width:490px;line-height:1.3;">
@@ -617,15 +617,15 @@ export class CoffeeChapter implements ChapterModule {
       const cSec = secondWeekly[w] ?? 0;
       const cOth = otherWeekly[w] ?? 0;
 
-      const topFill = cTop > 0 ? '#F4F03A' : '#2A2A28';
+      const topFill = cTop > 0 ? '#F0C454' : '#1E2B42';
       const topOp = cTop > 0 ? Math.min(1, 0.55 + cTop * 0.22).toFixed(2) : '1';
-      const secFill = cSec > 0 ? '#FF4F1F' : '#2A2A28';
+      const secFill = cSec > 0 ? '#FF7A5C' : '#1E2B42';
       const secOp = cSec > 0 ? Math.min(1, 0.55 + cSec * 0.22).toFixed(2) : '1';
 
       dualTracksSvg += `<rect class="rivalry-week-cell" data-track="top" x="${cx.toFixed(1)}" y="${matrixY}" width="${cellW.toFixed(1)}" height="${trackH}" fill="${topFill}" fill-opacity="${topOp}"/>`;
       dualTracksSvg += `<rect class="rivalry-week-cell" data-track="second" x="${cx.toFixed(1)}" y="${matrixY + trackH + trackGap}" width="${cellW.toFixed(1)}" height="${trackH}" fill="${secFill}" fill-opacity="${secOp}"/>`;
       if (!isCompact) {
-        const othFill = cOth > 0 ? '#A9A2E0' : '#242422';
+        const othFill = cOth > 0 ? '#A5B4FC' : '#172236';
         dualTracksSvg += `<rect class="rivalry-week-cell" data-track="other" x="${cx.toFixed(1)}" y="${matrixY + (trackH + trackGap) * 2}" width="${cellW.toFixed(1)}" height="12" fill="${othFill}"/>`;
       }
     }
@@ -642,7 +642,7 @@ export class CoffeeChapter implements ChapterModule {
         const hasTop = this.topCafeDates.has(d.date);
         const hasSec = this.secondCafeDates.has(d.date);
         const hasOth = this.otherCoffeeDates.has(d.date);
-        const fill = hasTop ? '#F4F03A' : hasSec ? '#FF4F1F' : hasOth ? '#A9A2E0' : '#262624';
+        const fill = hasTop ? '#F0C454' : hasSec ? '#FF7A5C' : hasOth ? '#A5B4FC' : '#172236';
         calendarMatrixSvg += `<rect class="coffee-cal-dot" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${cellW.toFixed(1)}" height="${dotH}" fill="${fill}"/>`;
       });
     }
@@ -678,25 +678,25 @@ export class CoffeeChapter implements ChapterModule {
     return `
       <svg data-testid="coffee-rivalry-svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible;">
         <!-- Track 1: Visits Split -->
-        <text x="${x0}" y="${vBarY - 6}" fill="#F4F03A" font-family="JetBrains Mono, monospace" font-size="${isCompact ? '8' : '10'}" font-weight="600">${topSvgName} (${this.escapeHtml(topVisitsFact.formatted)}${countSuffix})</text>
-        <text x="${vSecX.toFixed(1)}" y="${vSecY}" fill="#FF4F1F" font-family="JetBrains Mono, monospace" font-size="${isCompact ? '8' : '10'}" font-weight="600">${secSvgName} (${this.escapeHtml(secondVisitsFact.formatted)}${countSuffix})</text>
-        ${!isCompact ? `<text x="${width - 8}" y="${vBarY - 6}" fill="#C9C5BA" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="end">${otherEntitiesLabel} (${otherVisitsVal})</text>` : ''}
+        <text x="${x0}" y="${vBarY - 6}" fill="#F0C454" font-family="JetBrains Mono, monospace" font-size="${isCompact ? '8' : '10'}" font-weight="600">${topSvgName} (${this.escapeHtml(topVisitsFact.formatted)}${countSuffix})</text>
+        <text x="${vSecX.toFixed(1)}" y="${vSecY}" fill="#FF7A5C" font-family="JetBrains Mono, monospace" font-size="${isCompact ? '8' : '10'}" font-weight="600">${secSvgName} (${this.escapeHtml(secondVisitsFact.formatted)}${countSuffix})</text>
+        ${!isCompact ? `<text x="${width - 8}" y="${vBarY - 6}" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="end">${otherEntitiesLabel} (${otherVisitsVal})</text>` : ''}
 
-        <rect class="rivalry-split-bar" data-bar="visits-top" x="${x0}" y="${vBarY}" width="${vTopW.toFixed(1)}" height="${barH}" fill="#F4F03A"/>
-        <rect class="rivalry-split-bar" data-bar="visits-second" x="${(x0 + vTopW).toFixed(1)}" y="${vBarY}" width="${vSecW.toFixed(1)}" height="${barH}" fill="#FF4F1F"/>
-        <rect class="rivalry-split-bar" data-bar="visits-other" x="${(x0 + vTopW + vSecW).toFixed(1)}" y="${vBarY}" width="${vOthW.toFixed(1)}" height="${barH}" fill="#555552"/>
+        <rect class="rivalry-split-bar" data-bar="visits-top" x="${x0}" y="${vBarY}" width="${vTopW.toFixed(1)}" height="${barH}" fill="#F0C454"/>
+        <rect class="rivalry-split-bar" data-bar="visits-second" x="${(x0 + vTopW).toFixed(1)}" y="${vBarY}" width="${vSecW.toFixed(1)}" height="${barH}" fill="#FF7A5C"/>
+        <rect class="rivalry-split-bar" data-bar="visits-other" x="${(x0 + vTopW + vSecW).toFixed(1)}" y="${vBarY}" width="${vOthW.toFixed(1)}" height="${barH}" fill="#334155"/>
 
         <!-- Track 2: Spend Split -->
-        <text x="${x0}" y="${sBarY - 6}" fill="#F4F03A" font-family="JetBrains Mono, monospace" font-size="${isCompact ? '8' : '10'}" font-weight="600">${topSvgName} (${this.escapeHtml(topSpendFact.formatted)})</text>
-        <text x="${sSecX.toFixed(1)}" y="${sSecY}" fill="#FF4F1F" font-family="JetBrains Mono, monospace" font-size="${isCompact ? '8' : '10'}" font-weight="600">${secSvgName} (${this.escapeHtml(secondSpendFact.formatted)}${isCompact || !isSam ? '' : ' · HIGHER SPEND!'})</text>
-        ${!isCompact ? `<text x="${width - 8}" y="${sBarY - 6}" fill="#A9A2E0" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="end">${this.escapeHtml(merchantsCountFact.formatted)} ${totalEntitiesLabel} (${this.escapeHtml(totalSpendFact.formatted)})</text>` : ''}
+        <text x="${x0}" y="${sBarY - 6}" fill="#F0C454" font-family="JetBrains Mono, monospace" font-size="${isCompact ? '8' : '10'}" font-weight="600">${topSvgName} (${this.escapeHtml(topSpendFact.formatted)})</text>
+        <text x="${sSecX.toFixed(1)}" y="${sSecY}" fill="#FF7A5C" font-family="JetBrains Mono, monospace" font-size="${isCompact ? '8' : '10'}" font-weight="600">${secSvgName} (${this.escapeHtml(secondSpendFact.formatted)}${isCompact || !isSam ? '' : ' · HIGHER SPEND!'})</text>
+        ${!isCompact ? `<text x="${width - 8}" y="${sBarY - 6}" fill="#A5B4FC" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="end">${this.escapeHtml(merchantsCountFact.formatted)} ${totalEntitiesLabel} (${this.escapeHtml(totalSpendFact.formatted)})</text>` : ''}
 
-        <rect class="rivalry-split-bar" data-bar="spend-top" x="${x0}" y="${sBarY}" width="${sTopW.toFixed(1)}" height="${barH}" fill="#F4F03A"/>
-        <rect class="rivalry-split-bar" data-bar="spend-second" x="${(x0 + sTopW).toFixed(1)}" y="${sBarY}" width="${sSecW.toFixed(1)}" height="${barH}" fill="#FF4F1F"/>
-        <rect class="rivalry-split-bar" data-bar="spend-other" x="${(x0 + sTopW + sSecW).toFixed(1)}" y="${sBarY}" width="${sOthW.toFixed(1)}" height="${barH}" fill="#A9A2E0"/>
+        <rect class="rivalry-split-bar" data-bar="spend-top" x="${x0}" y="${sBarY}" width="${sTopW.toFixed(1)}" height="${barH}" fill="#F0C454"/>
+        <rect class="rivalry-split-bar" data-bar="spend-second" x="${(x0 + sTopW).toFixed(1)}" y="${sBarY}" width="${sSecW.toFixed(1)}" height="${barH}" fill="#FF7A5C"/>
+        <rect class="rivalry-split-bar" data-bar="spend-other" x="${(x0 + sTopW + sSecW).toFixed(1)}" y="${sBarY}" width="${sOthW.toFixed(1)}" height="${barH}" fill="#A5B4FC"/>
 
         <!-- Track 3: 53-Week Dual-Track Matrix -->
-        <text x="${x0}" y="${matrixY - 6}" fill="#C9C5BA" font-family="JetBrains Mono, monospace" font-size="${isCompact ? '8' : '9.5'}">${cadenceTitle}${isCompact ? '' : ` (YELLOW = ${topSvgName} · EMBER = ${secSvgName})`}</text>
+        <text x="${x0}" y="${matrixY - 6}" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="${isCompact ? '8' : '9.5'}">${cadenceTitle}${isCompact ? '' : ` (GOLD = ${topSvgName} · CORAL = ${secSvgName})`}</text>
         ${dualTracksSvg}
         ${calendarMatrixSvg}
       </svg>
@@ -714,7 +714,7 @@ export class CoffeeChapter implements ChapterModule {
       const preset = this.ctx.viewport === 'phone' ? GRID_PRESETS.phone : GRID_PRESETS.mini;
       grid.setGridGeometry(preset, { dur: rm ? 0 : 0.45, instant: rm });
       const solarRgb = RGB_PALETTE.c1;
-      const emberRgb = hexToRgb('#FF4F1F');
+      const emberRgb = hexToRgb('#FF7A5C');
       const lavRgb = RGB_PALETTE.lav;
 
       grid.days.forEach((v) => {

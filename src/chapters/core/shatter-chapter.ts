@@ -71,7 +71,7 @@ export class ShatterChapter implements ChapterModule {
       return {
         key: catKey,
         label: rawLabel !== catKey ? rawLabel : defaultLabel,
-        color: CATEGORY_COLORS[catKey] ?? '#F4F03A',
+        color: CATEGORY_COLORS[catKey] ?? '#F0C454',
         txns,
         totalMinor,
         fact: matchingFact,
@@ -140,7 +140,7 @@ export class ShatterChapter implements ChapterModule {
     const axisLinesHtml = [0, 0.25, 0.5, 0.75, 1]
       .map((ratio) => {
         const y = Math.round(baseY - ratio * maxH);
-        return `<div class="dt sx" style="position:absolute;left:120px;top:${y}px;width:1690px;height:1px;background:#3A3A38;transform-origin:0 50%"></div>`;
+        return `<div class="dt sx" style="position:absolute;left:120px;top:${y}px;width:1690px;height:1px;background:#26334D;transform-origin:0 50%"></div>`;
       })
       .join('');
 
@@ -175,13 +175,13 @@ export class ShatterChapter implements ChapterModule {
       ? (topCol.fact?.formatted ?? formatMoneyMinor(topCol.totalMinor, { showCents: false }))
       : '$0';
     const takeawayBannerHtml = topCol
-      ? `<div id="shatter-takeaway" data-testid="shatter-takeaway" aria-label="Click any category column below to inspect its receipts, or press Next → when ready" class="later ia" style="max-width:1792px;display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:6px 16px;padding:8px 14px;background:#1C1C1B;border-left:4px solid var(--c1);color:var(--bone);pointer-events:auto;">
+      ? `<div id="shatter-takeaway" data-testid="shatter-takeaway" aria-label="Click any category column below to inspect its receipts, or press Next → when ready" class="later ia" style="max-width:1792px;display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:6px 16px;padding:8px 14px;background:#141D2F;border-left:4px solid var(--c1);color:var(--bone);pointer-events:auto;">
           <span class="lab tx" style="position:static;font-size:11.5px;display:inline-flex;align-items:center;gap:8px;color:var(--c1);flex-shrink:0;">
             <i style="width:10px;height:10px;background:${topCol.color};display:inline-block"></i>
             #1 CATEGORY: ${this.escapeHtml(topCol.label)} (${this.escapeHtml(topFormatted)} · ${topSharePct}% OF ${isB2B ? 'OUTFLOW' : 'SPEND'})
           </span>
           <span class="tx" data-testid="chapter-body" style="position:static;font-size:14.5px;line-height:1.3;color:var(--bone);">
-            ${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F4F03A;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}
+            ${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F0C454;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}
           </span>
         </div>`
       : '';
@@ -268,7 +268,7 @@ export class ShatterChapter implements ChapterModule {
           const dl = dv.day.week_index * 0.01 + ((idx % 13) / 13) * 0.12;
           const d = 0.48 + ((idx % 9) / 9) * 0.14;
           const arc = (idx % 2 === 0 ? -1 : 1) * (0.08 + ((idx % 7) / 7) * 0.14);
-          const catRgb = hexToRgb(CATEGORY_COLORS[p.txn.category] ?? '#F4F03A');
+          const catRgb = hexToRgb(CATEGORY_COLORS[p.txn.category] ?? '#F0C454');
 
           grid.flyParticle(p, tx, ty, d, dl, arc, EASE.inOut3, (pp) => {
             grid.popVisual(pp, 0.3);
@@ -366,7 +366,7 @@ export class ShatterChapter implements ChapterModule {
       p.sc = 1;
       p.A = null;
       p.F = null;
-      grid.setColorImmediate(p, hexToRgb(CATEGORY_COLORS[p.txn.category] ?? '#F4F03A'));
+      grid.setColorImmediate(p, hexToRgb(CATEGORY_COLORS[p.txn.category] ?? '#F0C454'));
     });
   }
 

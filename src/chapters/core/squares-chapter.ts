@@ -104,7 +104,7 @@ export class SquaresChapter implements ChapterModule {
     const remapBarsSvg = weekDurations
       .map((v, c) => {
         const h = (v / maxWeekDur) * 40;
-        return `<rect class="remap-bar" x="${c * 32}" y="${(44 - h).toFixed(1)}" width="28" height="${h.toFixed(1)}" fill="#3A3A38"/>`;
+        return `<rect class="remap-bar" x="${c * 32}" y="${(44 - h).toFixed(1)}" width="28" height="${h.toFixed(1)}" fill="#26334D"/>`;
       })
       .join('');
 
@@ -119,24 +119,24 @@ export class SquaresChapter implements ChapterModule {
     const spendDigits = spendFact.formatted.replace(/^(?:US\$|€|£|¥|₹|CA\$|A\$|CHF\s*|\$)/, '');
 
     container.innerHTML = `
-      <div class="num gh" style="position:absolute;right:-30px;top:-210px;font-size:880px;color:var(--ghost, #1C1C1B);pointer-events:none"><span id="mghost">01</span></div>
+      <div class="num gh" style="position:absolute;right:-30px;top:-210px;font-size:880px;color:var(--ghost, #141D2F);pointer-events:none"><span id="mghost">01</span></div>
       <div class="lab tx" data-testid="chapter-kicker" style="position:absolute;left:52px;top:92px">${this.escapeHtml(ctx.chapter.params.kicker ?? '02 · THE YEAR AS SQUARES')}</div>
       <div class="num tx" data-testid="sweep-running-total" style="position:absolute;left:52px;top:132px;font-size:196px"><sup>${currencySup}</sup><span id="swtot">${this.escapeHtml(spendDigits)}</span></div>
       <div class="ch-header-stack" style="left:52px;top:346px;max-width:920px;max-height:120px;gap:8px">
         <div class="lab tx" id="swdate" data-testid="chapter-headline">${runningPrefix} · day 001 / ${ctx.days.length} · ${this.escapeHtml(headlineText)}</div>
-        <div class="tx" data-testid="chapter-body" style="max-width:920px;font-size:15px;line-height:1.32;color:#F3F0E6;background:#1C1C1B;border-left:3px solid #F4F03A;padding:8px 14px">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F4F03A;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
+        <div class="tx" data-testid="chapter-body" style="max-width:920px;font-size:15px;line-height:1.32;color:#F8FAFC;background:#141D2F;border-left:3px solid #F0C454;padding:8px 14px">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F0C454;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
       </div>
       <div class="blk ia" data-ax="b" id="swpay" data-testid="sweep-paydays-block" style="position:absolute;left:1440px;top:110px;width:416px;height:245px;background:var(--c4);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
         <div class="lab tx" style="position:absolute;left:26px;top:22px;right:22px;display:flex;justify-content:space-between;align-items:center">
           <span>${milestoneLabel}</span>
-          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(paydayFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;flex-shrink:0">Receipts</button>
+          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(paydayFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;flex-shrink:0">Receipts</button>
         </div>
         <div class="num tx" style="position:absolute;left:22px;bottom:18px;font-size:140px"><span id="swpayn">${this.escapeHtml(paydayFact.formatted)}</span><sup class="aft">/${this.escapeHtml(paydayFact.formatted)}</sup></div>
       </div>
       <div class="blk ia" data-ax="b" id="swloud" data-testid="sweep-loudest-block" style="position:absolute;left:1024px;top:205px;width:400px;height:150px;background:var(--c2);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
         <div class="lab tx" style="position:absolute;left:20px;top:16px;right:16px;font-size:12px;display:flex;justify-content:space-between;align-items:center">
           <span>${loudestLabel}</span>
-          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(spendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 6px;border:1px solid #111;cursor:pointer;flex-shrink:0">Receipts</button>
+          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(spendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 6px;border:1px solid var(--ink);cursor:pointer;flex-shrink:0">Receipts</button>
         </div>
         <div class="tx" id="swloudv" style="position:absolute;left:20px;bottom:18px;font-size:${isB2B ? 28 : 32}px;font-weight:300;letter-spacing:-0.03em;white-space:nowrap;max-width:348px;overflow:hidden;text-overflow:ellipsis">—</div>
       </div>
@@ -275,8 +275,8 @@ export class SquaresChapter implements ChapterModule {
         if (swPayBlock) {
           gsap.fromTo(
             swPayBlock,
-            { backgroundColor: '#F4F03A' },
-            { backgroundColor: '#FF5A14', duration: 0.42, ease: 'power2.out' }
+            { backgroundColor: '#F0C454' },
+            { backgroundColor: '#FF7A5C', duration: 0.42, ease: 'power2.out' }
           );
         }
         timeline.logEvent('sweep.payday', {
@@ -304,7 +304,7 @@ export class SquaresChapter implements ChapterModule {
       if (d.week_index !== this.sweepState.weekSeen) {
         this.sweepState.weekSeen = d.week_index;
         for (let c = 0; c <= d.week_index; c++) {
-          remapBars[c]?.setAttribute('fill', '#F3F0E6');
+          remapBars[c]?.setAttribute('fill', '#F8FAFC');
         }
       }
     }

@@ -66,7 +66,7 @@ export function renderBlockHtml(config: BlockConfig): string {
   const style = `left:${config.x}px;top:${config.y}px;width:${config.width}px;height:${config.height}px;background:${config.bg};color:${config.fg}`;
 
   const watermarkHtml = config.watermark
-    ? `<div class="num gh" style="position:absolute;right:-20px;bottom:-60px;font-size:${Math.round(config.height * 0.95)}px;color:${config.watermarkColor ?? 'rgba(17,17,17,0.08)'}">${config.watermark}</div>`
+    ? `<div class="num gh" style="position:absolute;right:-20px;bottom:-60px;font-size:${Math.round(config.height * 0.95)}px;color:${config.watermarkColor ?? 'rgba(11,17,30,0.08)'}">${config.watermark}</div>`
     : '';
 
   const labelLeftHtml = config.label

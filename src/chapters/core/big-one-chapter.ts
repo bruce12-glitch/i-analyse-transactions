@@ -68,7 +68,7 @@ export class BigOneChapter implements ChapterModule {
     const comparisonBarsSvg = everydayTxns
       .map((t, k) => {
         const h = Math.max(8, Math.min(340, (t.amount_minor / Math.max(100, bigMinor)) * 340));
-        return `<rect x="${k * 38}" y="${(360 - h).toFixed(1)}" width="28" height="${h.toFixed(1)}" fill="#111111"/>`;
+        return `<rect x="${k * 38}" y="${(360 - h).toFixed(1)}" width="28" height="${h.toFixed(1)}" fill="#0B111E"/>`;
       })
       .join('');
 
@@ -80,13 +80,13 @@ export class BigOneChapter implements ChapterModule {
       <div class="ch-header-stack" style="left:60px;top:84px;max-width:1480px;max-height:290px">
         <div class="lab tx">${this.escapeHtml(ctx.chapter.params.kicker ?? 'THE BIG ONE')}</div>
         <div class="split tx" data-testid="chapter-headline" style="font-size:68px;font-weight:300;letter-spacing:-0.04em;line-height:1.04;max-width:1480px">${this.escapeHtml(headlineText)}</div>
-        <div class="tx" data-testid="chapter-body" style="max-width:1480px;font-size:16px;line-height:1.35;color:${isB2B ? '#C9C5BA' : '#F3F0E6'};${isB2B ? '' : 'background:#1C1C1B;border-left:4px solid #F4F03A;padding:12px 18px'}">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F4F03A;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
+        <div class="tx" data-testid="chapter-body" style="max-width:1480px;font-size:16px;line-height:1.35;color:${isB2B ? '#94A3B8' : '#F8FAFC'};${isB2B ? '' : 'background:#141D2F;border-left:4px solid #F0C454;padding:12px 18px'}">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F0C454;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
       </div>
 
       <div class="blk ia" data-ax="b" data-testid="big-one-monolith-block" style="position:absolute;left:64px;top:410px;width:680px;height:440px;background:var(--c4);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
         <div class="lab tx" style="position:absolute;left:30px;top:24px;right:24px;display:flex;justify-content:space-between;align-items:center">
           <span>${this.escapeHtml(primaryLabel)}${topTxn ? ' · ' + this.escapeHtml(topTxn.merchant) : ''}</span>
-          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(primaryFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;flex-shrink:0">Receipts</button>
+          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(primaryFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;flex-shrink:0">Receipts</button>
         </div>
         <div class="num tx" style="position:absolute;left:24px;bottom:28px;font-size:156px">${pHasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(pDigits)}">${this.escapeHtml(pDigits)}</span></div>
         ${topTxn ? `<div class="lab dt" style="position:absolute;left:30px;top:64px;font-size:12px">${this.escapeHtml(topTxn.date)} · ${this.escapeHtml(topCatLabel)} · ${currencySup}${formatMoneyMinor(topTxn.amount_minor, { showCents: true, prefix: '' })}</div>` : ''}

@@ -74,7 +74,7 @@ export class StreakChapter implements ChapterModule {
     const nodesSvg = pts
       .map(
         ([x, y]) =>
-          `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="8" fill="#F4F03A" stroke="#111111" stroke-width="2.5"/>`
+          `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="8" fill="#F0C454" stroke="#0B111E" stroke-width="2.5"/>`
       )
       .join('');
 
@@ -94,13 +94,13 @@ export class StreakChapter implements ChapterModule {
       <div class="ch-header-stack" style="left:60px;top:84px;max-width:1040px;max-height:330px">
         <div class="lab tx">${this.escapeHtml(ctx.chapter.params.kicker ?? 'THE STREAK')}</div>
         <div class="split tx" data-testid="chapter-headline" style="font-size:68px;font-weight:300;letter-spacing:-0.04em;line-height:1.04;max-width:1040px">${this.escapeHtml(headlineText)}</div>
-        <div class="tx" data-testid="chapter-body" style="max-width:1020px;font-size:16px;line-height:1.35;color:${isB2B ? '#C9C5BA' : '#F3F0E6'};${isB2B ? '' : 'background:#1C1C1B;border-left:4px solid #F4F03A;padding:12px 18px'}">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F4F03A;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
+        <div class="tx" data-testid="chapter-body" style="max-width:1020px;font-size:16px;line-height:1.35;color:${isB2B ? '#94A3B8' : '#F8FAFC'};${isB2B ? '' : 'background:#141D2F;border-left:4px solid #F0C454;padding:12px 18px'}">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F0C454;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
       </div>
 
       <div class="blk ia" data-ax="b" data-testid="streak-primary-block" style="position:absolute;left:1140px;top:84px;width:360px;height:340px;background:var(--c1);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
         <div class="lab tx" style="position:absolute;left:26px;top:24px;right:22px;display:flex;justify-content:space-between;align-items:center">
           <span>${this.escapeHtml(primaryLabel)}</span>
-          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(primaryFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;flex-shrink:0">Receipts</button>
+          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(primaryFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;flex-shrink:0">Receipts</button>
         </div>
         <div class="num tx" style="position:absolute;left:22px;bottom:22px;font-size:132px">${pHasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(pDigits)}">${this.escapeHtml(pDigits)}</span></div>
       </div>
@@ -108,7 +108,7 @@ export class StreakChapter implements ChapterModule {
       <div class="blk ia" data-ax="b" data-testid="streak-secondary-block" style="position:absolute;left:1516px;top:84px;width:340px;height:340px;background:var(--c4);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
         <div class="lab tx" style="position:absolute;left:26px;top:24px;right:22px;display:flex;justify-content:space-between;align-items:center">
           <span>${this.escapeHtml(secondaryLabel)}</span>
-          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(secondaryFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;flex-shrink:0">Receipts</button>
+          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(secondaryFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;flex-shrink:0">Receipts</button>
         </div>
         <div class="num tx" style="position:absolute;left:22px;bottom:22px;font-size:108px">${sHasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(sDigits)}">${this.escapeHtml(sDigits)}</span></div>
         <div class="lab dt" style="position:absolute;left:26px;bottom:148px;font-size:11px">${this.escapeHtml(tertiaryLabel)}: ${this.escapeHtml(tertiaryFact.formatted)}</div>
@@ -116,7 +116,7 @@ export class StreakChapter implements ChapterModule {
 
       ${gridAnnoHtml}
       <svg class="dt" id="streak-svg" style="position:absolute;left:0;top:0;width:1920px;height:1080px;pointer-events:none">
-        ${pathD ? `<path id="streak-chain" d="${pathD}" fill="none" stroke="#F4F03A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>` : ''}
+        ${pathD ? `<path id="streak-chain" d="${pathD}" fill="none" stroke="#F0C454" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>` : ''}
         ${nodesSvg}
       </svg>
     `;

@@ -82,7 +82,7 @@ export class PersonalityChapter implements ChapterModule {
       return {
         key: catKey,
         label: rawLabel !== catKey ? rawLabel : defaultLabel,
-        color: CATEGORY_COLORS[catKey] ?? '#F4F03A',
+        color: CATEGORY_COLORS[catKey] ?? '#F0C454',
         share: sum / totalOutMinor,
       };
     };
@@ -131,7 +131,7 @@ export class PersonalityChapter implements ChapterModule {
       .map(
         (c) =>
           `<div class="lab dt" style="position:static;font-size:11.5px;display:flex;gap:8px;align-items:center;color:var(--ink)">
-            <i style="width:13px;height:13px;background:${c.color};display:block;outline:1px solid #111;flex-shrink:0"></i>${this.escapeHtml(c.label)}
+            <i style="width:13px;height:13px;background:${c.color};display:block;outline:1px solid var(--ink);flex-shrink:0"></i>${this.escapeHtml(c.label)}
           </div>`
       )
       .join('');
@@ -155,8 +155,8 @@ export class PersonalityChapter implements ChapterModule {
     const titleFontSize = titleText.length > 28 ? 68 : titleText.length > 20 ? 84 : 98;
     const youAreLabel = isB2B ? 'OPERATING PROFILE' : 'YOU ARE';
     const sprintsLabel = isB2B
-      ? 'Operating cycles · settlements in orange'
-      : 'The sprints · paydays in orange';
+      ? 'Operating cycles · settlements in coral'
+      : 'The sprints · paydays in coral';
     const ratioBlockLabel =
       ctx.chapter.params.blocks?.[0]?.label ??
       (isB2B ? 'Post-settlement vs baseline' : 'Payday vs normal');
@@ -167,7 +167,7 @@ export class PersonalityChapter implements ChapterModule {
       <div class="ch-header-stack" style="left:60px;top:172px;max-width:860px;max-height:540px;gap:14px">
         <div class="lab tx" style="font-size:16px">${youAreLabel}</div>
         <div class="split tx" data-testid="chapter-headline" style="font-size:${titleFontSize}px;font-weight:300;letter-spacing:-0.045em;line-height:1.04;max-width:860px">${splitTitle}</div>
-        <div class="tx" data-testid="chapter-body" style="max-width:840px;font-size:16px;line-height:1.35;color:#F3F0E6;background:#1C1C1B;border-left:4px solid #F4F03A;padding:12px 18px">${takeawayDisplay ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F4F03A;margin-right:8px">${takeawayDisplay}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
+        <div class="tx" data-testid="chapter-body" style="max-width:840px;font-size:16px;line-height:1.35;color:#F8FAFC;background:#141D2F;border-left:4px solid #F0C454;padding:12px 18px">${takeawayDisplay ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F0C454;margin-right:8px">${takeawayDisplay}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
       </div>
       <div class="lab dt" style="position:absolute;left:64px;top:836px;font-size:12px">${sprintsLabel}</div>
 
@@ -185,7 +185,7 @@ export class PersonalityChapter implements ChapterModule {
       <div class="blk ia" data-ax="b" data-testid="personality-ratio-block" style="position:absolute;left:616px;top:760px;width:304px;height:210px;background:var(--c4);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
         <div class="lab tx" style="position:absolute;left:22px;top:18px;right:18px;font-size:12px;display:flex;justify-content:space-between;align-items:center">
           <span>${this.escapeHtml(ratioBlockLabel)}</span>
-          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(ratioFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 6px;border:1px solid #111;cursor:pointer;flex-shrink:0">Receipts</button>
+          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(ratioFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 6px;border:1px solid var(--ink);cursor:pointer;flex-shrink:0">Receipts</button>
         </div>
         <div class="num tx" style="position:absolute;left:18px;bottom:14px;font-size:108px"><span class="od" data-v="${this.escapeHtml(ratioDigits)}">${this.escapeHtml(ratioDigits)}</span><sup class="aft">×</sup></div>
       </div>
@@ -303,7 +303,7 @@ export class PersonalityChapter implements ChapterModule {
       c.fillStyle = ct.color;
       c.fill();
       c.lineWidth = 1;
-      c.strokeStyle = '#111111';
+      c.strokeStyle = '#0B111E';
       c.stroke();
     });
 
@@ -312,7 +312,7 @@ export class PersonalityChapter implements ChapterModule {
     const maxDayMinor = Math.max(100, ...this.ctx.days.map((d) => d.discretionary_out_minor));
     const n = Math.floor(this.shapeState.bars * this.ctx.days.length);
     c.lineWidth = 2;
-    c.strokeStyle = '#111111';
+    c.strokeStyle = '#0B111E';
     c.beginPath();
     for (let i = 0; i < n; i++) {
       const d = this.ctx.days[i]!;
@@ -324,8 +324,8 @@ export class PersonalityChapter implements ChapterModule {
     }
     c.stroke();
 
-    // 3. Payday spikes in orange
-    c.strokeStyle = '#FF5A14';
+    // 3. Payday spikes in coral
+    c.strokeStyle = '#FF7A5C';
     c.lineWidth = 6;
     c.beginPath();
     for (let i = 0; i < n; i++) {
@@ -342,7 +342,7 @@ export class PersonalityChapter implements ChapterModule {
     // 4. Outer & inner rings
     if (this.shapeState.ring > 0) {
       c.lineWidth = 1.5;
-      c.strokeStyle = '#111111';
+      c.strokeStyle = '#0B111E';
       c.beginPath();
       c.arc(cx, cy, RR, -Math.PI / 2, -Math.PI / 2 + this.shapeState.ring * TAU);
       c.stroke();
@@ -351,7 +351,7 @@ export class PersonalityChapter implements ChapterModule {
       c.stroke();
     }
 
-    c.fillStyle = '#111111';
+    c.fillStyle = '#0B111E';
     c.fillRect(cx - 4, cy - 4, 8, 8);
   }
 

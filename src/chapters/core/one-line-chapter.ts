@@ -38,7 +38,7 @@ export class OneLineChapter implements ChapterModule {
     const factPillsHtml = referencedFacts
       .map(
         (f) =>
-          `<button type="button" class="chip receipt-trigger" data-fact-id="${this.escapeHtml(f.id)}" style="border-color:#111;color:#111;background:#F3F0E6;cursor:pointer;pointer-events:auto;">
+          `<button type="button" class="chip receipt-trigger" data-fact-id="${this.escapeHtml(f.id)}" style="border-color:var(--ink);color:var(--ink);background:var(--bone);cursor:pointer;pointer-events:auto;">
             <span>${this.escapeHtml(f.label)}: <b>${this.escapeHtml(f.formatted)}</b></span>
             <span style="font-size:10px;opacity:0.7">Receipts (${f.txn_ids.length})</span>
           </button>`
@@ -52,7 +52,7 @@ export class OneLineChapter implements ChapterModule {
             <div class="lab tx" data-testid="chapter-kicker" style="position:static;max-width:none">${this.escapeHtml(ctx.chapter.params.kicker ?? 'YOUR ONE LINE')}</div>
             <div class="tx" data-testid="chapter-headline" style="position:static;font-size:${headlineFontSize}px;font-weight:300;letter-spacing:-0.035em;line-height:1.08">${this.escapeHtml(oneLineText)}</div>
           </div>
-          <div class="tx" data-testid="chapter-body" style="position:static;width:100%;font-size:16px;line-height:1.35;background:#111111;color:#F3F0E6;border-left:4px solid #FF5A14;padding:12px 18px;margin-top:auto">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F4F03A;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
+          <div class="tx" data-testid="chapter-body" style="position:static;width:100%;font-size:16px;line-height:1.35;background:#0B111E;color:#F8FAFC;border-left:4px solid #FF7A5C;padding:12px 18px;margin-top:auto">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F0C454;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
         </div>
         <div class="tx" style="position:static;display:flex;gap:8px 10px;flex-wrap:wrap;margin-top:16px">${factPillsHtml}</div>
       </div>

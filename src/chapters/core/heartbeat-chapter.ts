@@ -42,7 +42,7 @@ export class HeartbeatChapter implements ChapterModule {
       : `KEY TAKEAWAY FOR ${this.escapeHtml(ctx.plan.person_name.toUpperCase())} ·`;
     const pulseLabel = isB2B
       ? 'OPERATING SETTLEMENT & CASHFLOW PULSE · DAY +0 TO DAY +27'
-      : 'POST-PAYDAY PULSE · DAY +0 TO DAY +27 (SURGE DAYS IN ORANGE)';
+      : 'POST-PAYDAY PULSE · DAY +0 TO DAY +27 (SURGE DAYS IN CORAL)';
 
     // Compute average post-payday curve (Day 0 payday .. Day +27)
     const paydayIndices: number[] = [];
@@ -72,7 +72,7 @@ export class HeartbeatChapter implements ChapterModule {
     const barsSvg = avgByOffset
       .map((val, k) => {
         const h = Math.max(8, (val / maxAvg) * 260);
-        const fill = k < 5 ? '#FF5A14' : '#111111';
+        const fill = k < 5 ? '#FF7A5C' : '#0B111E';
         return `<rect class="pb" x="${k * 34}" y="${(280 - h).toFixed(1)}" width="26" height="${h.toFixed(1)}" fill="${fill}"/>`;
       })
       .join('');
@@ -85,13 +85,13 @@ export class HeartbeatChapter implements ChapterModule {
       <div class="ch-header-stack" style="left:60px;top:84px;max-width:1400px;max-height:290px">
         <div class="lab tx">${this.escapeHtml(ctx.chapter.params.kicker ?? 'THE HEARTBEAT')}</div>
         <div class="split tx" data-testid="chapter-headline" style="font-size:68px;font-weight:300;letter-spacing:-0.04em;line-height:1.04;max-width:1400px">${this.escapeHtml(headlineText)}</div>
-        <div class="tx" data-testid="chapter-body" style="max-width:1400px;font-size:16px;line-height:1.35;color:${isB2B ? '#C9C5BA' : '#F3F0E6'};${isB2B ? '' : 'background:#1C1C1B;border-left:4px solid #F4F03A;padding:12px 18px'}">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F4F03A;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
+        <div class="tx" data-testid="chapter-body" style="max-width:1400px;font-size:16px;line-height:1.35;color:${isB2B ? '#94A3B8' : '#F8FAFC'};${isB2B ? '' : 'background:#141D2F;border-left:4px solid #F0C454;padding:12px 18px'}">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F0C454;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
       </div>
 
       <div class="blk ia" data-ax="b" data-testid="heartbeat-waveform-block" style="position:absolute;left:64px;top:410px;width:1040px;height:400px;background:var(--c1);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
         <div class="lab tx" style="position:absolute;left:28px;top:22px;right:24px;display:flex;justify-content:space-between;align-items:center">
           <span>${pulseLabel}</span>
-          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(ratioFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;flex-shrink:0">Receipts</button>
+          <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(ratioFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;flex-shrink:0">Receipts</button>
         </div>
         <svg class="dt" style="position:absolute;left:36px;top:84px" width="968" height="290">${barsSvg}</svg>
       </div>

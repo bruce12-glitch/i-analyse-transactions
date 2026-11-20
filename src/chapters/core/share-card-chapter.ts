@@ -37,27 +37,27 @@ export class ShareCardChapter implements ChapterModule {
       <div class="ch-header-stack" style="left:60px;top:92px;max-width:820px;max-height:290px">
         <div class="lab tx">${this.escapeHtml(ctx.chapter.params.kicker ?? 'SHARE YOUR YEAR')}</div>
         <div class="split tx" data-testid="chapter-headline" style="max-width:820px;font-size:70px;font-weight:300;letter-spacing:-0.045em;line-height:1.04">${this.escapeHtml(headlineText)}</div>
-        <div class="tx" data-testid="chapter-body" style="max-width:780px;font-size:16px;line-height:1.35;color:${isB2B ? '#C9C5BA' : '#F3F0E6'};${isB2B ? '' : 'background:#1C1C1B;border-left:4px solid #F4F03A;padding:12px 18px'}">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F4F03A;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
+        <div class="tx" data-testid="chapter-body" style="max-width:780px;font-size:16px;line-height:1.35;color:${isB2B ? '#94A3B8' : '#F8FAFC'};${isB2B ? '' : 'background:#141D2F;border-left:4px solid #F0C454;padding:12px 18px'}">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#F0C454;margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
       </div>
 
       <div class="blk ia" data-ax="b" data-testid="end-cta-block" style="position:absolute;left:64px;top:424px;width:780px;height:380px;background:var(--c1);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;padding:36px">
         <div class="lab tx" style="position:static;font-size:12px">WHAT NEXT · INTERACTIVE MODE</div>
         <div class="tx" style="position:static;font-size:46px;font-weight:300;letter-spacing:-0.03em;margin-top:12px;line-height:1.08">Dive into every day, category, and receipt.</div>
         <div class="tx" style="position:static;display:flex;gap:16px;flex-wrap:wrap;margin-top:34px">
-          <button type="button" class="btn primary mag" id="end-explore-cta" data-testid="end-explore-cta" style="font-size:15px;padding:18px 30px;background:#111;color:#F3F0E6;border:2px solid #111;cursor:pointer;">${exploreCtaLabel}</button>
-          <button type="button" class="btn mag" id="end-ask-cta" data-testid="end-ask-cta" style="font-size:14px;padding:18px 24px;border:2px solid #111;color:#111;cursor:pointer;">${askCtaLabel}</button>
-          <button type="button" class="btn" id="end-replay-btn" data-testid="end-replay-btn" style="font-size:13px;padding:18px 22px;border:1.5px solid #111;color:#111;cursor:pointer;">↻ REPLAY STORY</button>
+          <button type="button" class="btn primary mag" id="end-explore-cta" data-testid="end-explore-cta" style="font-size:15px;padding:18px 30px;background:var(--ink);color:var(--bone);border:2px solid var(--ink);cursor:pointer;">${exploreCtaLabel}</button>
+          <button type="button" class="btn mag" id="end-ask-cta" data-testid="end-ask-cta" style="font-size:14px;padding:18px 24px;border:2px solid var(--ink);color:var(--ink);cursor:pointer;">${askCtaLabel}</button>
+          <button type="button" class="btn" id="end-replay-btn" data-testid="end-replay-btn" style="font-size:13px;padding:18px 22px;border:1.5px solid var(--ink);color:var(--ink);cursor:pointer;">↻ REPLAY STORY</button>
         </div>
         <div class="tx" style="position:static;display:flex;gap:12px;margin-top:24px;align-items:center">
-          <button type="button" class="btn" id="dl-1350-btn" data-testid="export-1080x1350-btn" style="padding:10px 16px;border:1.5px solid #111;color:#111;font-size:11px;cursor:pointer;">⬇ PNG 1080 × 1350 (4:5)</button>
-          <button type="button" class="btn" id="dl-1920-btn" data-testid="export-1080x1920-btn" style="padding:10px 16px;border:1.5px solid #111;color:#111;font-size:11px;cursor:pointer;">⬇ PNG 1080 × 1920 (9:16)</button>
-          <button type="button" class="btn" id="share-receipts-btn" style="padding:10px 16px;border:1.5px solid #111;color:#111;font-size:11px;cursor:pointer;">Receipts (${ctx.chapter.txn_ids.length})</button>
+          <button type="button" class="btn" id="dl-1350-btn" data-testid="export-1080x1350-btn" style="padding:10px 16px;border:1.5px solid var(--ink);color:var(--ink);font-size:11px;cursor:pointer;">⬇ PNG 1080 × 1350 (4:5)</button>
+          <button type="button" class="btn" id="dl-1920-btn" data-testid="export-1080x1920-btn" style="padding:10px 16px;border:1.5px solid var(--ink);color:var(--ink);font-size:11px;cursor:pointer;">⬇ PNG 1080 × 1920 (9:16)</button>
+          <button type="button" class="btn" id="share-receipts-btn" style="padding:10px 16px;border:1.5px solid var(--ink);color:var(--ink);font-size:11px;cursor:pointer;">Receipts (${ctx.chapter.txn_ids.length})</button>
         </div>
       </div>
 
-      <div class="blk ia" data-ax="r" id="share-preview-wrap" data-testid="share-card-preview" style="position:absolute;left:940px;top:64px;width:916px;height:952px;background:#191918;border:2px solid var(--bone);transform-origin:100% 50%;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:auto;">
+      <div class="blk ia" data-ax="r" id="share-preview-wrap" data-testid="share-card-preview" style="position:absolute;left:940px;top:64px;width:916px;height:952px;background:#141D2F;border:2px solid var(--bone);transform-origin:100% 50%;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:auto;">
         <div class="lab tx" style="position:absolute;left:28px;top:20px;color:var(--bone);font-size:11px">SUMMARY CARD PREVIEW · HIGH-RESOLUTION EXPORT</div>
-        <canvas id="share-preview-canvas" width="1080" height="1350" style="width:620px;height:775px;border:1.5px solid #3A3A38;margin-top:24px"></canvas>
+        <canvas id="share-preview-canvas" width="1080" height="1350" style="width:620px;height:775px;border:1.5px solid #26334D;margin-top:24px"></canvas>
       </div>
     `;
 

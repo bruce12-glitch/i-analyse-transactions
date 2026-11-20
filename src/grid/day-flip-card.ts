@@ -46,7 +46,7 @@ export class DayFlipCard {
     this.backEl = document.createElement('div');
     this.backEl.className = 'b';
     this.backEl.style.cssText =
-      'position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg);background:var(--bone, #F3F0E6);color:var(--ink, #111111);padding:22px 24px;overflow:hidden;border:2px solid var(--ink, #111111);display:flex;flex-direction:column;';
+      'position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg);background:var(--paper, #F4F6F9);color:var(--ink, #0B111E);padding:22px 24px;overflow:hidden;border:2px solid var(--ink, #0B111E);display:flex;flex-direction:column;';
 
     this.innerEl.appendChild(this.frontEl);
     this.innerEl.appendChild(this.backEl);
@@ -93,13 +93,13 @@ export class DayFlipCard {
       visibleTxns.length > 0
         ? visibleTxns
             .map((t) => {
-              const swatchColor = CATEGORY_COLORS[t.category] ?? '#F4F03A';
+              const swatchColor = CATEGORY_COLORS[t.category] ?? '#F0C454';
               const amtStr = formatMoneyMinor(t.amount_minor, {
                 showCents: true,
                 prefix: '',
               });
               return `<div class="rc rr" style="font:500 14px/1 'JetBrains Mono',monospace;display:flex;gap:8px;padding:7px 0;align-items:baseline;">
-                <i class="sw" style="width:9px;height:9px;display:inline-block;flex:none;background:${swatchColor};outline:1px solid #111"></i>
+                <i class="sw" style="width:9px;height:9px;display:inline-block;flex:none;background:${swatchColor};outline:1px solid var(--ink)"></i>
                 <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:170px">${this.escapeHtml(t.merchant)}</span>
                 <span style="font-size:10px;opacity:0.65;text-transform:uppercase">${this.escapeHtml(t.category)}</span>
                 <span class="ld" style="flex:1;border-bottom:1.5px dotted currentColor;opacity:0.45;transform:translateY(-3px)"></span>
@@ -119,13 +119,13 @@ export class DayFlipCard {
         <span>${dayLabel.toUpperCase()}${dayVisual.day.is_payday ? ' · PAYDAY' : ''}</span>
         <div style="display:flex;gap:10px;align-items:center">
           <span>${txns.length} ITEM${txns.length === 1 ? '' : 'S'}</span>
-          <button type="button" data-action="close-flip" aria-label="Close day card" style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;padding:2px 6px;border:1px solid #111;cursor:pointer;pointer-events:auto;">×</button>
+          <button type="button" data-action="close-flip" aria-label="Close day card" style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;padding:2px 6px;border:1px solid var(--ink);cursor:pointer;pointer-events:auto;">×</button>
         </div>
       </div>
       <div style="margin-top:12px;flex:1;overflow:hidden">${rowsHtml}${moreHtml}</div>
-      <div class="rc rr" style="font:600 15px/1 'JetBrains Mono',monospace;display:flex;gap:8px;border-top:1.5px solid #111;margin-top:8px;padding-top:12px;align-items:center;justify-content:space-between">
+      <div class="rc rr" style="font:600 15px/1 'JetBrains Mono',monospace;display:flex;gap:8px;border-top:1.5px solid var(--ink);margin-top:8px;padding-top:12px;align-items:center;justify-content:space-between">
         <span>TOTAL · ${this.escapeHtml(this.currencySymbol)}${totalFormatted}</span>
-        <button type="button" data-action="open-day-receipts" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 10px;background:#111;color:#F3F0E6;cursor:pointer;pointer-events:auto;">Receipts (${dayVisual.day.txn_ids.length})</button>
+        <button type="button" data-action="open-day-receipts" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:6px 10px;background:var(--ink);color:var(--bone);cursor:pointer;pointer-events:auto;">Receipts (${dayVisual.day.txn_ids.length})</button>
       </div>
     `;
 

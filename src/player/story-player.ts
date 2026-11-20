@@ -18,6 +18,7 @@ import { formatMoneyMinor } from '../../contracts/index.js';
 import { answerQuestionDeterministically } from '../ask/index.js';
 import { createCoreChapterModule } from '../chapters/core/index.js';
 import type { ExtendedChapterContext } from '../chapters/core/pour-chapter.js';
+import { CORE_COLORS, PALETTES } from '../design/palette.js';
 import { ExploreOverlay } from '../explore/explore-overlay.js';
 import { ReceiptsDrawer } from '../explore/receipts-drawer.js';
 import { ShareExporter, type ShareCardSize } from '../explore/share-exporter.js';
@@ -49,66 +50,7 @@ export interface StoryPlayerData {
 
 export type CustomAskExecutor = (question: string) => Promise<AskQueryResult> | AskQueryResult;
 
-const DEFAULT_PALETTES: Record<string, PaletteTheme> = {
-  ink_solar: {
-    id: 'ink_solar',
-    name: 'Ink Solar',
-    bg: '#111111',
-    fg: '#F3F0E6',
-    accent: '#F4F03A',
-    secondary: '#FF5A14',
-    muted: '#8E8A7F',
-    blocks: {
-      primary: { bg: '#F4F03A', fg: '#111111' },
-      secondary: { bg: '#FFA8E4', fg: '#111111' },
-      tertiary: { bg: '#FF5A14', fg: '#111111' },
-      quaternary: { bg: '#A9A2E0', fg: '#111111' },
-    },
-  },
-  solar_ember: {
-    id: 'solar_ember',
-    name: 'Solar Ember',
-    bg: '#111111',
-    fg: '#F3F0E6',
-    accent: '#FF5A14',
-    secondary: '#F4F03A',
-    muted: '#8E8A7F',
-    blocks: {
-      primary: { bg: '#F4F03A', fg: '#111111' },
-      secondary: { bg: '#FF5A14', fg: '#111111' },
-      tertiary: { bg: '#FFA8E4', fg: '#111111' },
-      quaternary: { bg: '#A9A2E0', fg: '#111111' },
-    },
-  },
-  ink_rose: {
-    id: 'ink_rose',
-    name: 'Ink Rose',
-    bg: '#111111',
-    fg: '#F3F0E6',
-    accent: '#FFA8E4',
-    secondary: '#F4F03A',
-    muted: '#8E8A7F',
-    blocks: {
-      primary: { bg: '#FFA8E4', fg: '#111111' },
-      secondary: { bg: '#F4F03A', fg: '#111111' },
-      tertiary: { bg: '#6E8BFF', fg: '#111111' },
-    },
-  },
-  paper_studio: {
-    id: 'paper_studio',
-    name: 'Paper Studio',
-    bg: '#111111',
-    fg: '#F3F0E6',
-    accent: '#F3F0E6',
-    secondary: '#FF5A14',
-    muted: '#8E8A7F',
-    blocks: {
-      primary: { bg: '#F3F0E6', fg: '#111111' },
-      secondary: { bg: '#FF5A14', fg: '#111111' },
-      tertiary: { bg: '#B9B744', fg: '#111111' },
-    },
-  },
-};
+const DEFAULT_PALETTES: Record<string, PaletteTheme> = PALETTES;
 
 const ASK_SAMPLE_QUESTIONS = [
   'How much did I spend on coffee in December?',
@@ -268,19 +210,22 @@ export class StoryPlayer {
     style.id = 'sam-2025-player-styles';
     style.textContent = `
       :root {
-        --ink: #111111;
-        --bone: #F3F0E6;
-        --paper: #E6E4DE;
-        --c1: #F4F03A;
-        --c2: #FFA8E4;
-        --c3: #B9B744;
-        --c4: #FF5A14;
-        --c5: #E3A83C;
-        --c6: #FF6B57;
-        --lav: #A9A2E0;
-        --mint: #B9F0C6;
-        --blue: #6E8BFF;
-        --ghost: #1C1C1B;
+        --ink: #0f1214;
+        --bone: #e4e0d7;
+        --paper: #f1ede5;
+        --c1: #F0C454;
+        --c2: #7DD3FC;
+        --c3: #34D399;
+        --c4: #FF7A5C;
+        --c5: #FBBF54;
+        --c6: #F48FB1;
+        --lav: #A5B4FC;
+        --mint: #6EE7B7;
+        --blue: #60A5FA;
+        --ghost: #141D2F;
+        --rule-dark: #26334D;
+        --rule-light: #CBD5E1;
+        --muted-bone: #94A3B8;
       }
       * { box-sizing: border-box; margin: 0; padding: 0; }
       html, body { background: var(--ink); color: var(--bone); overflow: hidden; width: 100vw; height: 100vh; font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -302,7 +247,7 @@ export class StoryPlayer {
       #chnav button + button { border-left: 1.5px solid var(--ink); }
       #chnav button[aria-current="true"] { background: var(--ink); color: var(--bone); }
       .tog { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; display: flex; gap: 6px; align-items: center; cursor: pointer; }
-      .tog input { width: 15px; height: 15px; accent-color: #111; }
+      .tog input { width: 15px; height: 15px; accent-color: var(--ink); }
       #stagewrap { position: relative; margin: 0 auto; width: calc(1920px * var(--s, 0.5)); height: calc(1080px * var(--s, 0.5)); flex-shrink: 0; }
       #stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform: scale(var(--s, 0.5)); transform-origin: 0 0; background: var(--ink); color: var(--bone); overflow: hidden; contain: strict; user-select: none; -webkit-user-select: none; }
       .layer { position: absolute; inset: 0; }
@@ -336,12 +281,12 @@ export class StoryPlayer {
       .chip i { width: 10px; height: 10px; display: block; }
       .chip[aria-pressed="true"] { background: var(--bone); color: var(--ink); }
       #prog { position: absolute; left: 0; top: 0; right: 0; height: 6px; display: flex; gap: 4px; pointer-events: auto; }
-      #prog button { flex: 1; background: #2A2A29; position: relative; overflow: hidden; height: 6px; border: 0; padding: 0; cursor: pointer; }
+      #prog button { flex: 1; background: #26334D; position: relative; overflow: hidden; height: 6px; border: 0; padding: 0; cursor: pointer; }
       #prog button i { position: absolute; inset: 0; background: var(--bone); transform-origin: 0 50%; transform: scaleX(0); }
       #beatdot { display: inline-block; width: 9px; height: 9px; background: var(--c4); margin-right: 6px; }
-      #stage-hud-nav { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; align-items: center; background: rgba(17, 17, 17, 0.88); border: 1.5px solid #3A3A38; color: var(--bone); pointer-events: auto; z-index: 55; }
+      #stage-hud-nav { position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); display: flex; align-items: center; background: rgba(15, 18, 20, 0.92); border: 1.5px solid #26334D; color: var(--bone); pointer-events: auto; z-index: 55; }
       #stage-hud-nav button { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 7px 12px; color: var(--bone); transition: background-color 0.16s, color 0.16s; white-space: nowrap; }
-      #stage-hud-nav button + button { border-left: 1.5px solid #3A3A38; }
+      #stage-hud-nav button + button { border-left: 1.5px solid #26334D; }
       #stage-hud-nav button:hover { background: var(--bone); color: var(--ink); }
       #stage-hud-nav button.hud-primary { background: var(--c1); color: var(--ink); font-weight: 600; }
       body.film { padding: 0; background: var(--ink); overflow: hidden; }
@@ -465,7 +410,7 @@ export class StoryPlayer {
             </div>
             <div id="fclick" style="position:absolute;left:0;top:0;width:60px;height:60px;margin:-30px 0 0 -30px;border:2px solid var(--bone);border-radius:50%;opacity:0;pointer-events:none;z-index:60"></div>
             <div id="fcur" data-testid="fake-cursor" style="position:absolute;left:0;top:0;pointer-events:none;opacity:0;z-index:65">
-              <svg width="34" height="40" viewBox="0 0 34 40"><path d="M4 3 L4 33 L12 25 L18 38 L24 35.5 L18 23 L29 23 Z" fill="#F3F0E6" stroke="#111" stroke-width="2.4" stroke-linejoin="round"/></svg>
+              <svg width="34" height="40" viewBox="0 0 34 40"><path d="M4 3 L4 33 L12 25 L18 38 L24 35.5 L18 23 L29 23 Z" fill="#F8FAFC" stroke="#0B111E" stroke-width="2.4" stroke-linejoin="round"/></svg>
             </div>
           </div>
 
@@ -488,7 +433,7 @@ export class StoryPlayer {
                     : this.escapeHtml(this.resolveCopy(this.data.plan.one_line))
                 }</p>
               </div>
-              <div id="start-cta-card" data-ax="b" style="background:var(--c4);color:var(--ink);padding:44px 48px;display:flex;flex-direction:column;justify-content:space-between;min-height:510px;box-sizing:border-box;transform-origin:50% 100%">
+              <div id="start-cta-card" data-ax="b" style="background:var(--c2);color:var(--ink);padding:44px 48px;display:flex;flex-direction:column;justify-content:space-between;min-height:510px;box-sizing:border-box;transform-origin:50% 100%">
                 <div>
                   <div class="lab" id="start-cta-kicker" style="font-size:13px;letter-spacing:0.12em">${byoAwaiting ? 'CONNECT DATA SOURCE' : 'READY TO PLAY · 120 BPM'}</div>
                   <div id="start-stat-box" style="display:${byoAwaiting ? 'none' : 'block'};margin-top:10px;">
@@ -541,7 +486,7 @@ export class StoryPlayer {
                   <div
                     id="byo-upload-disclaimer"
                     data-testid="byo-upload-disclaimer"
-                    style="font-size:10.5px;line-height:1.45;color:rgba(17,17,17,0.88);font-family:'Inter Tight',system-ui,sans-serif;"
+                    style="font-size:10.5px;line-height:1.45;color:rgba(11,17,30,0.88);font-family:'Inter Tight',system-ui,sans-serif;"
                   >
                     <p style="margin:0 0 5px 0;">
                       By using this feature, you confirm that you have the necessary rights to any content that you upload. Do not generate content that infringes on others’ intellectual property or privacy rights. Your use of this generative AI service is subject to our <a href="https://policies.google.com/terms/generative-ai/use-policy" target="_blank" rel="noopener noreferrer" style="color:var(--ink);text-decoration:underline;font-weight:600;">Prohibited Use Policy</a>.
@@ -551,12 +496,12 @@ export class StoryPlayer {
                     </p>
                   </div>
 
-                  <label for="byo-deep-agent-toggle" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;padding:8px 10px;border-radius:8px;background:rgba(11,13,18,0.55);border:1px solid rgba(244,241,234,0.1);cursor:pointer;user-select:none">
-                    <span style="display:flex;align-items:center;gap:8px;font:500 12px/1.3 'Inter',sans-serif;color:rgba(244,241,234,0.88)">
-                      <input type="checkbox" id="byo-deep-agent-toggle" data-testid="byo-deep-agent-toggle" style="accent-color:#15803D;width:14px;height:14px;cursor:pointer" />
+                  <label for="byo-deep-agent-toggle" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;padding:8px 10px;border-radius:8px;background:rgba(11,17,30,0.85);border:1px solid rgba(248,250,252,0.16);cursor:pointer;user-select:none">
+                    <span style="display:flex;align-items:center;gap:8px;font:500 12px/1.3 'Inter Tight',sans-serif;color:#F8FAFC">
+                      <input type="checkbox" id="byo-deep-agent-toggle" data-testid="byo-deep-agent-toggle" style="accent-color:#34D399;width:14px;height:14px;cursor:pointer" />
                       Advanced: Deep Agent Audit
                     </span>
-                    <span style="font:500 10px/1.2 'JetBrains Mono',monospace;color:rgba(244,241,234,0.5);letter-spacing:0.04em">PYTHON SANDBOX · UP TO 10 MIN</span>
+                    <span style="font:500 10px/1.2 'JetBrains Mono',monospace;color:#94A3B8;letter-spacing:0.04em">PYTHON SANDBOX · UP TO 10 MIN</span>
                   </label>
 
                   <div
@@ -568,12 +513,12 @@ export class StoryPlayer {
                       <span id="byo-progress-label" style="color:var(--c1);font-weight:600;">Processing dataset...</span>
                       <span id="byo-progress-pct">0%</span>
                     </div>
-                    <div style="width:100%;height:6px;background:#2A2A29;margin-top:8px;overflow:hidden;">
+                    <div style="width:100%;height:6px;background:#26334D;margin-top:8px;overflow:hidden;">
                       <div id="byo-progress-fill" style="width:0%;height:100%;background:var(--c1);transition:width 0.22s ease-out;"></div>
                     </div>
-                    <div id="byo-deep-agent-notice" data-testid="byo-deep-agent-notice" style="display:none;margin-top:10px;padding-top:8px;border-top:1px solid rgba(243,240,230,0.16);flex-direction:column;gap:8px;">
-                      <div style="font-size:10.5px;color:rgba(243,240,230,0.82);line-height:1.35;">Deep Agent Audit running in Python sandbox (can take up to 10 minutes)...</div>
-                      <button type="button" id="byo-skip-agent-btn" data-testid="byo-skip-agent-btn" style="align-self:flex-start;padding:5px 10px;background:rgba(244,240,58,0.14);color:var(--c1);border:1px solid var(--c1);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;cursor:pointer;">Skip wait &amp; open fast summary →</button>
+                    <div id="byo-deep-agent-notice" data-testid="byo-deep-agent-notice" style="display:none;margin-top:10px;padding-top:8px;border-top:1px solid rgba(248,250,252,0.16);flex-direction:column;gap:8px;">
+                      <div style="font-size:10.5px;color:rgba(248,250,252,0.85);line-height:1.35;">Deep Agent Audit running in Python sandbox (can take up to 10 minutes)...</div>
+                      <button type="button" id="byo-skip-agent-btn" data-testid="byo-skip-agent-btn" style="align-self:flex-start;padding:5px 10px;background:rgba(240,196,84,0.16);color:var(--c1);border:1px solid var(--c1);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.06em;text-transform:uppercase;font-weight:600;cursor:pointer;">Skip wait &amp; open fast summary →</button>
                     </div>
                   </div>
 
@@ -628,7 +573,7 @@ export class StoryPlayer {
       <div class="blk ia" data-ax="l" style="position:absolute;left:64px;top:88px;width:1792px;height:164px;background:var(--bone);color:var(--ink);transform-origin:0 50%;pointer-events:auto;">
         <div class="lab tx" style="position:absolute;left:32px;top:18px;right:220px;display:flex;justify-content:space-between;align-items:center">
           <span>ASK YOUR YEAR · DETERMINISTIC QUERY EXECUTOR</span>
-          <button type="button" id="ask-close-btn" data-testid="ask-close-btn" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 10px;border:1.5px solid #111;cursor:pointer;">← Back to story</button>
+          <button type="button" id="ask-close-btn" data-testid="ask-close-btn" style="font-family:'JetBrains Mono',monospace;font-size:11px;padding:4px 10px;border:1.5px solid var(--ink);cursor:pointer;">← Back to story</button>
         </div>
         <input class="tx ia" id="askin" data-testid="ask-input" autocomplete="off" spellcheck="false" placeholder="Ask your year anything…" style="position:absolute;left:28px;top:54px;width:1480px;height:90px;font-size:56px;font-weight:300;letter-spacing:-0.03em;color:var(--ink);caret-color:var(--c4);outline:none" />
         <button type="button" class="tx ia mag" id="askgo" data-testid="ask-submit-btn" style="position:absolute;right:0;top:0;width:200px;height:164px;background:var(--ink);color:var(--bone);font-family:'JetBrains Mono',monospace;font-size:15px;letter-spacing:0.14em;cursor:pointer;">ASK ↵</button>
@@ -712,7 +657,7 @@ export class StoryPlayer {
       return;
     }
     msgEl.style.display = 'block';
-    msgEl.style.color = isError ? '#FF6B57' : 'var(--c1)';
+    msgEl.style.color = isError ? CORE_COLORS.ember : 'var(--c1)';
     msgEl.textContent = message;
   }
 
@@ -1921,7 +1866,7 @@ export class StoryPlayer {
 
     const matchDateSet = new Set(res.matching_dates);
     const catColor = res.query.filters.categories[0]
-      ? hexToRgb(CATEGORY_COLORS[res.query.filters.categories[0]] ?? '#F4F03A')
+      ? hexToRgb(CATEGORY_COLORS[res.query.filters.categories[0]] ?? CORE_COLORS.solar)
       : RGB_PALETTE.c1;
 
     this.grid.applyHighlightDatesWave(matchDateSet, catColor, ox, oy);
@@ -1946,7 +1891,7 @@ export class StoryPlayer {
     rcContentEl.innerHTML = `
       <div class="lab" style="position:static;display:flex;justify-content:space-between;align-items:center">
         <span>RECEIPTS (${res.matching_txn_ids.length})</span>
-        <button type="button" id="ask-open-drawer-btn" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;background:#111;color:#F3F0E6;cursor:pointer;">Full Drawer →</button>
+        <button type="button" id="ask-open-drawer-btn" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;background:var(--ink);color:var(--bone);cursor:pointer;">Full Drawer →</button>
       </div>
       <div style="margin-top:14px">
         ${topRows

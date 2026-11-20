@@ -88,7 +88,7 @@ export class ReceiptsDrawer {
     this.backdropEl.id = 'receipts-backdrop';
     this.backdropEl.dataset.testid = 'receipts-backdrop';
     this.backdropEl.style.cssText =
-      'position:fixed;inset:0;background:rgba(17,17,17,0.62);z-index:80;visibility:hidden;opacity:0;display:flex;justify-content:flex-end;';
+      'position:fixed;inset:0;background:rgba(11,17,30,0.68);z-index:80;visibility:hidden;opacity:0;display:flex;justify-content:flex-end;';
 
     this.drawerEl = document.createElement('aside');
     this.drawerEl.id = 'receipts-drawer';
@@ -96,7 +96,7 @@ export class ReceiptsDrawer {
     this.drawerEl.setAttribute('role', 'dialog');
     this.drawerEl.setAttribute('aria-label', 'Traceable Receipts');
     this.drawerEl.style.cssText =
-      'width:min(540px, 100vw);height:100%;background:var(--bone, #F3F0E6);color:var(--ink, #111111);border-left:2px solid var(--ink, #111111);display:flex;flex-direction:column;transform:translateX(100%);font-family:"Inter Tight",system-ui,sans-serif;';
+      'width:min(540px, 100vw);height:100%;background:var(--paper, #F4F6F9);color:var(--ink, #0B111E);border-left:2px solid var(--ink, #0B111E);display:flex;flex-direction:column;transform:translateX(100%);font-family:"Inter Tight",system-ui,sans-serif;';
 
     this.backdropEl.appendChild(this.drawerEl);
     parentContainer.appendChild(this.backdropEl);
@@ -169,10 +169,10 @@ export class ReceiptsDrawer {
         : `+${this.currencySymbol}${inAmount}`;
 
     this.drawerEl.innerHTML = `
-      <div style="padding:24px 28px 18px;border-bottom:2px solid #111;background:#F4F03A;color:#111">
+      <div style="padding:24px 28px 18px;border-bottom:2px solid #0B111E;background:#F0C454;color:#0B111E">
         <div style="display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;">
           <span>Ledger entries · click any row</span>
-          <button type="button" data-action="close-receipts" data-testid="close-receipts-btn" style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;padding:6px 12px;border:1.5px solid #111;background:#111;color:#F3F0E6;cursor:pointer;">CLOSE [ESC]</button>
+          <button type="button" data-action="close-receipts" data-testid="close-receipts-btn" style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;padding:6px 12px;border:1.5px solid #0B111E;background:#0B111E;color:#F8FAFC;cursor:pointer;">CLOSE [ESC]</button>
         </div>
         <h2 style="font-size:32px;font-weight:400;letter-spacing:-0.03em;line-height:1.1;margin-top:12px">${this.escapeHtml(this.currentTitle)}</h2>
         <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:13px;">
@@ -180,10 +180,10 @@ export class ReceiptsDrawer {
           <span style="font-size:20px;font-weight:600">${this.escapeHtml(primaryTotalStr)}</span>
         </div>
       </div>
-      <div style="padding:14px 28px;border-bottom:1.5px solid #111;display:flex;gap:10px;align-items:center;background:#E6E4DE">
-        <input type="search" id="receipts-search" placeholder="Filter merchant, category, date, ID…" value="${this.escapeHtml(this.searchQuery)}" style="flex:1;padding:8px 12px;border:1.5px solid #111;background:#F3F0E6;font-family:'JetBrains Mono',monospace;font-size:12px;color:#111;outline:none;" />
-        <button type="button" data-sort="amount" style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;padding:8px 11px;border:1.5px solid #111;background:${this.sortMode === 'amount' ? '#111' : 'transparent'};color:${this.sortMode === 'amount' ? '#F3F0E6' : '#111'};cursor:pointer;">Amount ↓</button>
-        <button type="button" data-sort="date" style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;padding:8px 11px;border:1.5px solid #111;background:${this.sortMode === 'date' ? '#111' : 'transparent'};color:${this.sortMode === 'date' ? '#F3F0E6' : '#111'};cursor:pointer;">Date ↓</button>
+      <div style="padding:14px 28px;border-bottom:1.5px solid #CBD5E1;display:flex;gap:10px;align-items:center;background:#E2E8F0">
+        <input type="search" id="receipts-search" placeholder="Filter merchant, category, date, ID…" value="${this.escapeHtml(this.searchQuery)}" style="flex:1;padding:8px 12px;border:1.5px solid #0B111E;background:#F8FAFC;font-family:'JetBrains Mono',monospace;font-size:12px;color:#0B111E;outline:none;" />
+        <button type="button" data-sort="amount" style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;padding:8px 11px;border:1.5px solid #0B111E;background:${this.sortMode === 'amount' ? '#0B111E' : 'transparent'};color:${this.sortMode === 'amount' ? '#F8FAFC' : '#0B111E'};cursor:pointer;">Amount ↓</button>
+        <button type="button" data-sort="date" style="font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;padding:8px 11px;border:1.5px solid #0B111E;background:${this.sortMode === 'date' ? '#0B111E' : 'transparent'};color:${this.sortMode === 'date' ? '#F8FAFC' : '#0B111E'};cursor:pointer;">Date ↓</button>
       </div>
       <div id="receipts-list" data-testid="receipts-list" style="flex:1;overflow-y:auto;padding:12px 28px 28px"></div>
     `;
@@ -238,20 +238,20 @@ export class ReceiptsDrawer {
 
     listEl.innerHTML = filtered
       .map((t) => {
-        const swatch = CATEGORY_COLORS[t.category] ?? '#F4F03A';
+        const swatch = CATEGORY_COLORS[t.category] ?? '#F0C454';
         const amtFormatted = formatMoneyMinor(t.amount_minor, { showCents: true, prefix: '' });
         const prefix = t.direction === 'in' ? '+' : '';
         const catDisplay = t.category_label ?? t.category;
         return `
-          <div class="receipt-item" data-txn-id="${this.escapeHtml(t.id)}" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #C9C5BA;font-family:'JetBrains Mono',monospace;font-size:13px;">
-            <span style="width:10px;height:10px;background:${swatch};outline:1px solid #111;flex:none"></span>
+          <div class="receipt-item" data-txn-id="${this.escapeHtml(t.id)}" style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #CBD5E1;font-family:'JetBrains Mono',monospace;font-size:13px;">
+            <span style="width:10px;height:10px;background:${swatch};outline:1px solid #0B111E;flex:none"></span>
             <div style="flex:1;min-width:0">
               <div style="display:flex;gap:8px;align-items:baseline">
-                <strong style="font-weight:600;color:#111;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${this.escapeHtml(t.merchant)}</strong>
-                <span style="font-size:10px;padding:2px 6px;border:1px solid #111;text-transform:uppercase;background:#E6E4DE">${this.escapeHtml(catDisplay)}</span>
-                ${t.is_refund ? '<span style="font-size:10px;padding:2px 5px;background:#FFA8E4;color:#111;text-transform:uppercase">REFUND</span>' : ''}
+                <strong style="font-weight:600;color:#0B111E;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${this.escapeHtml(t.merchant)}</strong>
+                <span style="font-size:10px;padding:2px 6px;border:1px solid #0B111E;text-transform:uppercase;background:#E2E8F0">${this.escapeHtml(catDisplay)}</span>
+                ${t.is_refund ? '<span style="font-size:10px;padding:2px 5px;background:#7DD3FC;color:#0B111E;text-transform:uppercase">REFUND</span>' : ''}
               </div>
-              <div style="font-size:11px;color:#555552;margin-top:3px;display:flex;gap:12px">
+              <div style="font-size:11px;color:#475569;margin-top:3px;display:flex;gap:12px">
                 <span>${this.escapeHtml(t.date)}</span>
                 <span>ID: ${this.escapeHtml(t.id)}</span>
               </div>

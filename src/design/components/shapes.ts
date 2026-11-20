@@ -132,7 +132,7 @@ export function renderMiniYearDotsSvg(
   } = {}
 ): string {
   const activeColor = options.activeColor ?? CORE_COLORS.solar;
-  const inactiveColor = options.inactiveColor ?? '#3A3A38';
+  const inactiveColor = options.inactiveColor ?? CORE_COLORS.ruleDark;
   const pitch = 10.5;
   const size = 8;
 
@@ -175,7 +175,7 @@ export function renderGridAnnotationsHtml(
   if (options.showWeekdays !== false) {
     WEEKDAY_LETTERS.forEach((letter, r) => {
       const y = preset.y + r * preset.p + preset.c / 2 - 9;
-      html += `<div class="lab dt" style="left:${preset.x - 24}px;top:${y}px;font-size:11px;color:#C9C5BA">${letter}</div>`;
+      html += `<div class="lab dt" style="left:${preset.x - 24}px;top:${y}px;font-size:11px;color:${CORE_COLORS.mutedTextOnInk}">${letter}</div>`;
     });
   }
 

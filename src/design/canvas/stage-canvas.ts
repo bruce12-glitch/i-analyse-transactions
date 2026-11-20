@@ -902,7 +902,7 @@ export class StageCanvasEngine {
           targetRgb = [...RGB_DIM] as RGBTuple;
         } else {
           const q = Math.min(1, Math.sqrt(dayCatSpend / (avgCatSpend * 2.2)));
-          targetRgb = mixRgb(hexToRgb('#2A2A28'), catMeta.rgb, 0.35 + 0.65 * q);
+          targetRgb = mixRgb(hexToRgb(CORE_COLORS.quietCell), catMeta.rgb, 0.35 + 0.65 * q);
         }
       }
 

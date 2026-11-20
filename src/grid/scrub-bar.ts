@@ -133,7 +133,7 @@ export class ScrubBar {
       if (!seenMonths.has(v.month)) {
         seenMonths.add(v.month);
         const col = Math.floor((i + firstWeekday) / 7);
-        monthTicks += `<div style="position:absolute;left:${col * geom.p}px;top:12px;width:1px;height:16px;background:#77746C"></div>`;
+        monthTicks += `<div style="position:absolute;left:${col * geom.p}px;top:12px;width:1px;height:16px;background:#64748B"></div>`;
       }
     });
 
@@ -147,7 +147,7 @@ export class ScrubBar {
 
     return `
       <div class="dt" id="scrub" data-testid="scrub-track" style="position:absolute;left:${geom.x}px;top:600px;width:${53 * geom.p}px;height:40px;cursor:ew-resize;pointer-events:auto;">
-        <div style="position:absolute;left:0;right:0;top:19px;height:2px;background:#4A4A47"></div>
+        <div style="position:absolute;left:0;right:0;top:19px;height:2px;background:#26334D"></div>
         ${monthTicks}
         <div id="scrubfill" style="position:absolute;left:0;top:18px;height:4px;background:var(--bone);width:100%;transform-origin:0 50%"></div>
       </div>
@@ -157,7 +157,7 @@ export class ScrubBar {
       <div class="tx ia" style="position:absolute;left:${geom.x}px;top:668px;display:flex;gap:14px;align-items:center;pointer-events:auto;">
         <button type="button" class="btn mag" id="replay-btn" data-testid="replay-btn" style="border-color:var(--bone);color:var(--bone);min-width:120px">▶ Replay</button>
         <div style="display:flex;border:1.5px solid var(--bone)" id="speed-btns" data-testid="speed-btns">${speedBtnsHtml}</div>
-        <span class="lab" style="position:static;font-size:12px">Replay speed · drag the orange handle to scrub</span>
+        <span class="lab" style="position:static;font-size:12px">Replay speed · drag the coral handle to scrub</span>
       </div>
     `;
   }
@@ -198,8 +198,8 @@ export class ScrubBar {
     for (const btn of this.speedBtns) {
       const on = Number(btn.dataset.speed) === speed;
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-      btn.style.background = on ? 'var(--bone, #F3F0E6)' : 'transparent';
-      btn.style.color = on ? 'var(--ink, #111111)' : 'var(--bone, #F3F0E6)';
+      btn.style.background = on ? 'var(--bone, #F8FAFC)' : 'transparent';
+      btn.style.color = on ? 'var(--ink, #0B111E)' : 'var(--bone, #F8FAFC)';
     }
     this.callbacks.onLogEvent?.('explore.speed', speed);
   }
@@ -296,9 +296,9 @@ export class ScrubBar {
     const matching = v.txns.filter((t) => t.category === this.activeLens);
     const sumMinor = matching.reduce((acc, t) => acc + t.amount_minor, 0);
     if (sumMinor <= 0) return RGB_PALETTE.dim;
-    const catRgb = hexToRgb(CATEGORY_COLORS[this.activeLens] ?? '#F4F03A');
+    const catRgb = hexToRgb(CATEGORY_COLORS[this.activeLens] ?? '#F0C454');
     const q = Math.min(1, Math.sqrt(sumMinor / 6000));
-    return mixRgb(hexToRgb('#2A2A28'), catRgb, 0.35 + 0.65 * q);
+    return mixRgb(hexToRgb('#1E2B42'), catRgb, 0.35 + 0.65 * q);
   }
 
   public drawScrubPlayhead(geom: GridGeometry = GRID_PRESETS.explore): void {

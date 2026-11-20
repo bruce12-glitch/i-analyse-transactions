@@ -167,7 +167,7 @@ export class PourChapter implements ChapterModule {
       const row = j % 80;
       const rawRow = t ? formatWallRow(t, false) : '0101 POS COFFEE      -4.50';
       const cleanRow = t ? formatWallRow(t, true) : '01 Blue Bottle        4.50';
-      const color = t ? (CATEGORY_COLORS[t.category] ?? '#F4F03A') : '#F4F03A';
+      const color = t ? (CATEGORY_COLORS[t.category] ?? '#F0C454') : '#F0C454';
       this.wallRows.push({
         j,
         col,
@@ -193,7 +193,7 @@ export class PourChapter implements ChapterModule {
       for (let r = 0; r < 80; r++) {
         const j = c * 80 + r;
         const wr = this.wallRows[j]!;
-        wallHtml += `<div class="wr" style="position:absolute;left:6px;top:${r * 13.5}px;width:168px;height:13.5px;font:500 10.5px/13.5px 'JetBrains Mono',monospace;white-space:pre;color:#8E8A7F;"><span class="a"></span><span class="b">${this.escapeHtml(wr.rawRow)}</span></div>`;
+        wallHtml += `<div class="wr" style="position:absolute;left:6px;top:${r * 13.5}px;width:168px;height:13.5px;font:500 10.5px/13.5px 'JetBrains Mono',monospace;white-space:pre;color:#94A3B8;"><span class="a"></span><span class="b">${this.escapeHtml(wr.rawRow)}</span></div>`;
       }
       wallHtml += '</div>';
     }
@@ -240,19 +240,19 @@ export class PourChapter implements ChapterModule {
         <div class="ch-header-stack" style="left:60px;top:58px;max-width:1180px;max-height:240px">
           ${ctx.chapter.params.kicker ? `<div class="lab tx" data-testid="chapter-kicker">${this.escapeHtml(ctx.chapter.params.kicker)}</div>` : ''}
           <div class="split tx" data-testid="chapter-headline" style="max-width:1180px;font-size:78px;font-weight:300;letter-spacing:-0.04em;line-height:1.04">${this.escapeHtml(headlineText)}</div>
-          <div class="tx" data-testid="chapter-body" style="max-width:960px;font-size:16px;line-height:1.35;color:${isB2B ? '#C9C5BA' : 'var(--bone)'};${isB2B ? '' : 'background:rgba(243,240,230,0.06);border-left:3px solid var(--c1);padding:10px 14px'}">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--c1);margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
+          <div class="tx" data-testid="chapter-body" style="max-width:960px;font-size:16px;line-height:1.35;color:${isB2B ? '#94A3B8' : 'var(--bone)'};${isB2B ? '' : 'background:rgba(248,250,252,0.06);border-left:3px solid var(--c1);padding:10px 14px'}">${takeawayPrefix ? `<strong style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--c1);margin-right:8px">${takeawayPrefix}</strong>` : ''}${this.escapeHtml(bodyText)}</div>
         </div>
         <div class="blk ia" data-ax="b" data-testid="metric-block-spend" style="position:absolute;left:1300px;top:64px;width:556px;height:284px;background:var(--c1);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
           <div class="lab tx" style="position:absolute;left:30px;top:26px;right:24px;display:flex;justify-content:space-between;align-items:center">
             <span>${this.escapeHtml(spendBlockLabel)}</span>
-            <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(spendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;flex-shrink:0">Receipts (${spendFact.txn_ids.length})</button>
+            <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(spendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;flex-shrink:0">Receipts (${spendFact.txn_ids.length})</button>
           </div>
           <div class="num tx" style="position:absolute;left:26px;bottom:24px;font-size:138px"><sup>${currencySup}</sup><span class="od" data-v="${this.escapeHtml(spendRawDigits)}">${this.escapeHtml(spendRawDigits)}</span></div>
         </div>
         <div class="blk ia" data-ax="b" data-testid="metric-block-count" style="position:absolute;left:1300px;top:360px;width:348px;height:168px;background:var(--c2);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
           <div class="lab tx" style="position:absolute;left:24px;top:18px;right:18px;display:flex;justify-content:space-between;align-items:center">
             <span>${this.escapeHtml(countBlockLabel)}</span>
-            <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(countFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 6px;border:1px solid #111;cursor:pointer;flex-shrink:0">Receipts</button>
+            <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(countFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:3px 6px;border:1px solid var(--ink);cursor:pointer;flex-shrink:0">Receipts</button>
           </div>
           <div class="num tx" style="position:absolute;left:20px;bottom:14px;font-size:96px"><span class="od" data-v="${this.escapeHtml(countFact.formatted)}">${this.escapeHtml(countFact.formatted)}</span></div>
         </div>
@@ -376,7 +376,7 @@ export class PourChapter implements ChapterModule {
   private computeTitlePoints(yearText: string): void {
     this.currentYearText = yearText;
     this.titlePts = [];
-    this.renderTitleCanvas('#F3F0E6');
+    this.renderTitleCanvas('#F8FAFC');
     const count = 880;
     const step = 9;
     this.titleBox.step = step;
@@ -463,8 +463,8 @@ export class PourChapter implements ChapterModule {
     if (rm) {
       if (wallEl) gsap.set(wallEl, { autoAlpha: 0 });
       if (lensEl) gsap.set(lensEl, { autoAlpha: 0 });
-      this.renderTitleCanvas('#1C1C1B');
-      if (ttlEl) gsap.set(ttlEl, { opacity: 1, color: '#1C1C1B' });
+      this.renderTitleCanvas('#141D2F');
+      if (ttlEl) gsap.set(ttlEl, { opacity: 1, color: '#141D2F' });
       if (openerEl) {
         enterStageGroup(openerEl, tl, 0, true);
       }
@@ -488,8 +488,8 @@ export class PourChapter implements ChapterModule {
       }
     });
 
-    this.renderTitleCanvas('#F3F0E6');
-    if (ttlEl) gsap.set(ttlEl, { opacity: 0, color: '#F3F0E6' });
+    this.renderTitleCanvas('#F8FAFC');
+    if (ttlEl) gsap.set(ttlEl, { opacity: 0, color: '#F8FAFC' });
     if (openerEl) {
       gsap.set(openerEl.querySelectorAll('.blk'), { scaleY: 0 });
       gsap.set(openerEl.querySelectorAll('.tx,.dt,.split'), { autoAlpha: 0 });
@@ -597,7 +597,7 @@ export class PourChapter implements ChapterModule {
     tl.call(
       () => {
         if (wallEl) wallEl.style.visibility = 'hidden';
-        this.renderTitleCanvas('#1C1C1B');
+        this.renderTitleCanvas('#141D2F');
         this.dissolveTitleIntoGrid();
         timeline.logEvent('title.dissolve', 365);
       },
@@ -606,7 +606,7 @@ export class PourChapter implements ChapterModule {
     );
 
     if (ttlEl) {
-      tl.to(ttlEl, { color: '#1C1C1B', duration: 0.3 }, 6.7);
+      tl.to(ttlEl, { color: '#141D2F', duration: 0.3 }, 6.7);
     }
 
     if (openerEl) {
@@ -638,7 +638,7 @@ export class PourChapter implements ChapterModule {
         } else {
           const n = Math.floor(q * 26);
           const str = r.cleanRow.slice(0, n) + scrambleTail(r.cleanRow, n, Math.floor(t * 30));
-          this.updateWallRowText(r, str, n, r.color, '#F3F0E6');
+          this.updateWallRowText(r, str, n, r.color, '#F8FAFC');
         }
       }
       if (r.st === 3 && t >= r.colTime) {
@@ -650,7 +650,7 @@ export class PourChapter implements ChapterModule {
         r.lens.last = r.cur;
         r.lens.a.textContent = r.cur.slice(0, r.n);
         r.lens.b.textContent = r.cur.slice(r.n);
-        r.lens.a.style.color = '#111111';
+        r.lens.a.style.color = '#0B111E';
         r.lens.k.style.background = r.st >= 3 ? r.color : 'transparent';
       }
     }
@@ -728,7 +728,7 @@ export class PourChapter implements ChapterModule {
       const dl = Math.max(0, ((p.x - L) / W) * 0.95) + ((idx % 13) / 13) * 0.12;
       const d = 0.48 + ((idx % 9) / 9) * 0.14;
       const arc = (idx % 2 === 0 ? -1 : 1) * (0.1 + ((idx % 7) / 7) * 0.18);
-      const catRgb = hexToRgb(CATEGORY_COLORS[p.txn.category] ?? '#F4F03A');
+      const catRgb = hexToRgb(CATEGORY_COLORS[p.txn.category] ?? '#F0C454');
 
       grid.flyParticle(p, dv.x, dv.y, d, dl, arc, EASE.inOut3, (pp) => {
         pp.v = 0;

@@ -1,5 +1,10 @@
 import type { Category, Day, Transaction } from '../../contracts/index.js';
 import { formatMoneyMinor, getCategoryDisplayLabel } from '../../contracts/index.js';
+import {
+  CATEGORY_COLORS as DESIGN_CATEGORY_COLORS,
+  CORE_COLORS,
+  GRID_INTENSITY_STEPS_RGB,
+} from '../design/palette.js';
 
 export type RGB = [number, number, number];
 
@@ -23,25 +28,7 @@ export const GRID_PRESETS: Record<
   phone: { x: 24, y: 310, p: 6.4, c: 5.2 },
 };
 
-export const CATEGORY_COLORS: Record<Category, string> = {
-  groceries: '#B9B744',
-  'eating out': '#FF6B57',
-  takeaway: '#FF8552',
-  coffee: '#E3A83C',
-  transport: '#A9A2E0',
-  travel: '#6E8BFF',
-  shopping: '#FFA8E4',
-  bills: '#B9F0C6',
-  subscriptions: '#7CE0C3',
-  health: '#8FD6FF',
-  fun: '#F4F03A',
-  gifts: '#FFB8D1',
-  rent: '#8E8A7F',
-  fees: '#9E6B6B',
-  savings: '#A3D977',
-  transfers: '#555552',
-  income: '#FF5A14',
-};
+export const CATEGORY_COLORS: Record<Category, string> = DESIGN_CATEGORY_COLORS;
 
 export const DISPLAY_CATEGORIES: readonly { key: Category; label: string; color: string }[] = [
   { key: 'groceries', label: 'Groceries', color: CATEGORY_COLORS.groceries },
@@ -171,24 +158,20 @@ export interface RingVisual {
 }
 
 export const RGB_PALETTE = {
-  ink: hexToRgb('#111111'),
-  bone: hexToRgb('#F3F0E6'),
-  c1: hexToRgb('#F4F03A'),
-  c2: hexToRgb('#FFA8E4'),
-  c3: hexToRgb('#B9B744'),
-  c4: hexToRgb('#FF5A14'),
-  lav: hexToRgb('#A9A2E0'),
-  empty: hexToRgb('#232322'),
-  dim: hexToRgb('#1B1B1A'),
+  ink: hexToRgb(CORE_COLORS.ink),
+  bone: hexToRgb(CORE_COLORS.bone),
+  c1: hexToRgb(CORE_COLORS.solar),
+  c2: hexToRgb(CORE_COLORS.rose),
+  c3: hexToRgb(CORE_COLORS.olive),
+  c4: hexToRgb(CORE_COLORS.ember),
+  lav: hexToRgb(CORE_COLORS.lavender),
+  empty: hexToRgb(CORE_COLORS.emptyCell),
+  dim: hexToRgb(CORE_COLORS.dimCell),
 };
 
-export const SPEND_STEPS_RGB: readonly RGB[] = [
-  hexToRgb('#2C2C2A'),
-  mixRgb(hexToRgb('#262626'), RGB_PALETTE.c1, 0.3),
-  mixRgb(hexToRgb('#262626'), RGB_PALETTE.c1, 0.62),
-  RGB_PALETTE.c1,
-  RGB_PALETTE.bone,
-];
+export const SPEND_STEPS_RGB: readonly RGB[] = GRID_INTENSITY_STEPS_RGB.map(
+  (rgb) => [rgb[0], rgb[1], rgb[2]] as RGB
+);
 
 const MONTH_NAMES = [
   'Jan',
@@ -419,7 +402,7 @@ export class InteractiveGrid {
     const particleSource = transactions.filter((t) => !t.is_transfer);
     particleSource.forEach((t, idx) => {
       const dayIdx = dateToIndex.get(t.date) ?? 0;
-      const catRgb = hexToRgb(CATEGORY_COLORS[t.category] ?? '#F3F0E6');
+      const catRgb = hexToRgb(CATEGORY_COLORS[t.category] ?? CORE_COLORS.bone);
       this.particles.push({
         txn: t,
         dayIndex: dayIdx,
@@ -578,7 +561,7 @@ export class InteractiveGrid {
       d: opts.d ?? 0.6,
       r0: opts.r0 ?? 14,
       r1: opts.r1 ?? 90,
-      c: opts.c ?? '#FF5A14',
+      c: opts.c ?? CORE_COLORS.ember,
       lw: opts.lw ?? 2,
       sq: opts.sq !== false,
     });
@@ -718,7 +701,7 @@ export class InteractiveGrid {
       catTxns.length > 0
         ? catTxns.reduce((acc, t) => acc + t.amount_minor, 0) / catTxns.length
         : 2500;
-    const catRgb = category ? hexToRgb(CATEGORY_COLORS[category] ?? '#F4F03A') : RGB_PALETTE.c1;
+    const catRgb = category ? hexToRgb(CATEGORY_COLORS[category] ?? CORE_COLORS.solar) : RGB_PALETTE.c1;
 
     this.days.forEach((v, i) => {
       const dist = Math.hypot(v.x - originX, v.y - originY);
@@ -742,7 +725,7 @@ export class InteractiveGrid {
           count += matching.length;
           for (const t of matching) matchingTxnIds.push(t.id);
           const q = Math.min(1, Math.sqrt(dayCatMinor / (avgCatTxnMinor * 2.2)));
-          const col = mixRgb(hexToRgb('#2A2A28'), catRgb, 0.35 + 0.65 * q);
+          const col = mixRgb(hexToRgb(CORE_COLORS.quietCell), catRgb, 0.35 + 0.65 * q);
           this.tweenColor(v, col, 0.24, delay);
         } else {
           this.tweenColor(v, RGB_PALETTE.dim, 0.24, delay);
@@ -759,7 +742,7 @@ export class InteractiveGrid {
         r0: 10,
         r1: 1500,
         d: 1500 * waveSpeed * 1.05,
-        c: category ? (CATEGORY_COLORS[category] ?? '#F3F0E6') : '#F3F0E6',
+        c: category ? (CATEGORY_COLORS[category] ?? CORE_COLORS.bone) : CORE_COLORS.bone,
         lw: 2,
         sq: false,
       });
@@ -810,7 +793,7 @@ export class InteractiveGrid {
           return {
             key: cat,
             label,
-            color: CATEGORY_COLORS[cat] ?? '#F4F03A',
+            color: CATEGORY_COLORS[cat] ?? CORE_COLORS.solar,
           };
         });
       if (active.length > 0) {
@@ -858,7 +841,7 @@ export class InteractiveGrid {
 
     if (opts.dows !== false) {
       'MTWTFSS'.split('').forEach((ch, r) => {
-        html += `<div class="lab dt" style="position:absolute;left:${geom.x - 24}px;top:${geom.y + r * geom.p + geom.c / 2 - 9}px;font-size:11px;color:#C9C5BA">${ch}</div>`;
+        html += `<div class="lab dt" style="position:absolute;left:${geom.x - 24}px;top:${geom.y + r * geom.p + geom.c / 2 - 9}px;font-size:11px;color:${CORE_COLORS.mutedTextOnInk}">${ch}</div>`;
       });
     }
 
@@ -870,7 +853,7 @@ export class InteractiveGrid {
         const isPay = v.day.is_payday;
         const w = isPay ? 2 : 1;
         const h = isPay ? 22 : isMonthStart ? 14 : 6;
-        const fill = isPay ? '#FF5A14' : '#F3F0E6';
+        const fill = isPay ? CORE_COLORS.ember : CORE_COLORS.bone;
         const op = isPay || isMonthStart ? '' : 'opacity="0.55"';
         rects += `<rect x="${x}" y="0" width="${w}" height="${h}" fill="${fill}" ${op}/>`;
       });
@@ -893,7 +876,7 @@ export class InteractiveGrid {
         .join('');
       html += `<div class="lab dt" style="position:absolute;left:${geom.x}px;top:${y}px;font-size:12px;display:flex;gap:18px;align-items:center;white-space:nowrap">
         <span style="display:flex;gap:4px;align-items:center">QUIET&nbsp;${stepSwatches}&nbsp;LOUD</span>
-        <span data-milestone-label="${this.milestoneLabel}" style="display:flex;gap:7px;align-items:center"><i style="display:inline-block;width:13px;height:13px;background:#FF5A14"></i>${milestoneDisplay}</span>
+        <span data-milestone-label="${this.milestoneLabel}" style="display:flex;gap:7px;align-items:center"><i style="display:inline-block;width:13px;height:13px;background:${CORE_COLORS.ember}"></i>${milestoneDisplay}</span>
         <span>1 SQUARE = 1 DAY · MONDAY ON TOP${opts.note ? ' · ' + opts.note.toUpperCase() : ''}</span>
       </div>
       <div class="lab dt" data-testid="grid-category-legend" style="position:absolute;left:${geom.x}px;top:${y + 22}px;font-size:10px;display:flex;gap:14px;align-items:center;white-space:nowrap;opacity:0.82">
@@ -994,7 +977,7 @@ export class InteractiveGrid {
       if (highlighted) {
         highlighted.sort((a, b) => a[0].hov - b[0].hov);
         for (const [v, z] of highlighted) {
-          ctx.fillStyle = '#111111';
+          ctx.fillStyle = CORE_COLORS.ink;
           ctx.fillRect(v.x - z / 2 - 2, v.y - z / 2 - 2, z + 4, z + 4);
           ctx.fillStyle = `rgb(${v.r | 0},${v.g | 0},${v.b | 0})`;
           ctx.fillRect(v.x - z / 2, v.y - z / 2, z, z);
@@ -1088,7 +1071,7 @@ export class InteractiveGrid {
   private drawLensBracket(): void {
     const ctx = this.ctx;
     ctx.globalAlpha = this.lensBracketAlpha;
-    ctx.strokeStyle = '#F4F03A';
+    ctx.strokeStyle = CORE_COLORS.solar;
     ctx.lineWidth = 1.5;
     const x = 2 * 174.5 + 2;
     const y = 30 * 13.5 - 2;
@@ -1142,7 +1125,7 @@ export class InteractiveGrid {
         ctx.lineTo(x + h, y + h);
       }
     }
-    ctx.strokeStyle = '#F3F0E6';
+    ctx.strokeStyle = CORE_COLORS.bone;
     ctx.lineWidth = 2.5;
     ctx.setLineDash([9, 6]);
     ctx.lineDashOffset = -this.clockSec * 48;

@@ -227,7 +227,7 @@ export function mountDesignPrototype(
         ${lensRowIndices
           .map((idx) => {
             const pv = engine.particleViews[idx]!;
-            return `<div class="lr"><span class="a" style="color:#111">${escapeHtml(pv.cleanRow)}</span><span class="b"></span><i class="k" style="background:${CATEGORY_META[pv.category].color}"></i></div>`;
+            return `<div class="lr"><span class="a" style="color:var(--ink)">${escapeHtml(pv.cleanRow)}</span><span class="b"></span><i class="k" style="background:${CATEGORY_META[pv.category].color}"></i></div>`;
           })
           .join('')}
       </div>
@@ -275,7 +275,7 @@ export function mountDesignPrototype(
   const remapBarsSvg = weeklySeconds
     .map((sec, c) => {
       const h = (sec / maxWeekSec) * 40;
-      return `<rect class="remap-bar" x="${c * 32}" y="${(44 - h).toFixed(1)}" width="28" height="${h.toFixed(1)}" fill="#3A3A38"/>`;
+      return `<rect class="remap-bar" x="${c * 32}" y="${(44 - h).toFixed(1)}" width="28" height="${h.toFixed(1)}" fill="${CORE_COLORS.ruleDark}"/>`;
     })
     .join('');
 
@@ -356,7 +356,7 @@ export function mountDesignPrototype(
   for (let v = 0; v <= shL.topDollars; v += 2000) {
     const y = shL.baseY - v * shL.scale;
     shatterAxesHtml += `
-      <div class="dt sx" style="left:120px;top:${y.toFixed(1)}px;width:1690px;height:1px;background:#3A3A38;transform-origin:0 50%"></div>
+      <div class="dt sx" style="left:120px;top:${y.toFixed(1)}px;width:1690px;height:1px;background:var(--rule-dark);transform-origin:0 50%"></div>
       <div class="lab dt" style="left:64px;top:${(y - 9).toFixed(1)}px;font-size:11px">${v ? `${v / 1000}K` : 'US$0'}</div>
     `;
   }
@@ -404,7 +404,7 @@ export function mountDesignPrototype(
     .map((cat, k) => {
       const col = k % 4;
       const row = Math.floor(k / 4);
-      return `<div class="lab dt" style="left:${64 + col * 212}px;top:${938 + row * 40}px;font-size:12px;display:flex;gap:9px;align-items:center;color:var(--ink)"><i style="width:13px;height:13px;background:${cat.color};display:block;outline:1px solid #111"></i>${cat.label.toUpperCase()} ${Math.max(1, Math.round(cat.share * 100))}%</div>`;
+      return `<div class="lab dt" style="left:${64 + col * 212}px;top:${938 + row * 40}px;font-size:12px;display:flex;gap:9px;align-items:center;color:var(--ink)"><i style="width:13px;height:13px;background:${cat.color};display:block;outline:1px solid var(--ink)"></i>${cat.label.toUpperCase()} ${Math.max(1, Math.round(cat.share * 100))}%</div>`;
     })
     .join('');
 
@@ -422,7 +422,7 @@ export function mountDesignPrototype(
         style: 'left:20px;bottom:14px',
       })}
     </div>
-    <div class="lab dt" style="left:64px;top:844px;font-size:12px">THE SPRINTS · PAYDAYS IN ORANGE</div>
+    <div class="lab dt" style="left:64px;top:844px;font-size:12px">THE SPRINTS · PAYDAYS IN CORAL</div>
     <div class="blk" data-ax="r" id="pshape" style="left:980px;top:0;width:940px;height:1080px;background:var(--bone);color:var(--ink)">
       <canvas id="pc" width="940" height="1080" style="position:absolute;left:0;top:0;width:940px;height:1080px"></canvas>
       ${wheelMonthLabelsHtml}
@@ -511,7 +511,7 @@ export function mountDesignPrototype(
               ${Array.from({ length: 365 }, (_, i) => {
                 const col = Math.floor((i + JAN_1_2025_WEEKDAY) / 7);
                 const row = (i + JAN_1_2025_WEEKDAY) % 7;
-                return `<rect x="${col * 10.5}" y="${row * 10.5}" width="8" height="8" fill="${cpDayIndices.has(i) ? CORE_COLORS.solar : '#3A3A38'}"/>`;
+                return `<rect x="${col * 10.5}" y="${row * 10.5}" width="8" height="8" fill="${cpDayIndices.has(i) ? CORE_COLORS.solar : CORE_COLORS.ruleDark}"/>`;
               }).join('')}
             </svg>
           </div>
@@ -597,7 +597,7 @@ export function mountDesignPrototype(
       phoneStageEl.innerHTML = `
         <div class="lab" style="left:20px;top:20px">SAM · 2025 · 01 / THE POUR</div>
         <div style="position:absolute;left:18px;top:46px;font-size:62px;font-weight:300;letter-spacing:-0.045em;line-height:0.95">Your 2025.</div>
-        <div class="lab" style="left:20px;top:116px;font-size:9.5px;color:#C9C5BA">1,000 RAW BANK ROWS UNSCRAMBLED INTO CLEAN NAMES</div>
+        <div class="lab" style="left:20px;top:116px;font-size:9.5px;color:var(--muted-bone)">1,000 RAW BANK ROWS UNSCRAMBLED INTO CLEAN NAMES</div>
         <div class="blk" style="left:0;top:144px;width:390px;height:282px;background:var(--c1);color:var(--ink)">
           <div class="lab" style="left:20px;top:16px">RAW → CLEAN</div>
           <div class="lab" style="right:20px;top:16px">7 OF ${totalTxCount} ROWS</div>
@@ -606,7 +606,7 @@ export function mountDesignPrototype(
               .slice(0, 6)
               .map((idx) => {
                 const pv = engine.particleViews[idx]!;
-                return `<div style="font:500 13.5px/34px 'JetBrains Mono',monospace;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(17,17,17,0.14)"><span>${escapeHtml(pv.tx.merchant.slice(0, 18))}</span><span>US$${pv.amtDollars.toFixed(2)} <i style="display:inline-block;width:9px;height:9px;background:${CATEGORY_META[pv.category].color};margin-left:6px"></i></span></div>`;
+                return `<div style="font:500 13.5px/34px 'JetBrains Mono',monospace;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(11,17,30,0.14)"><span>${escapeHtml(pv.tx.merchant.slice(0, 18))}</span><span>US$${pv.amtDollars.toFixed(2)} <i style="display:inline-block;width:9px;height:9px;background:${CATEGORY_META[pv.category].color};margin-left:6px"></i></span></div>`;
               })
               .join('')}
           </div>
@@ -619,7 +619,7 @@ export function mountDesignPrototype(
           <div class="lab" style="left:16px;top:16px">PAYDAYS</div>
           <div class="num" style="position:absolute;left:14px;bottom:14px;font-size:78px">${paydayCount}</div>
         </div>
-        <div class="blk" style="left:0;top:640px;width:390px;height:204px;background:var(--ink);color:var(--bone);border-top:2px solid #2A2A29">
+        <div class="blk" style="left:0;top:640px;width:390px;height:204px;background:var(--ink);color:var(--bone);border-top:2px solid var(--rule-dark)">
           <div class="lab" style="left:20px;top:16px;font-size:9.5px">365 DAYS · EVERY SQUARE IS A DAY OF 2025</div>
           <svg style="position:absolute;left:20px;top:48px" width="350" height="126" viewBox="0 0 530 140">
             ${Array.from({ length: 365 }, (_, i) => {
@@ -643,7 +643,7 @@ export function mountDesignPrototype(
       phoneStageEl.innerHTML = `
         <div class="lab" style="position:absolute;left:20px;top:20px">SAM · 2025 · 04 / THE SHATTER</div>
         <div style="position:absolute;left:18px;top:46px;font-size:48px;font-weight:300;letter-spacing:-0.04em;line-height:0.98">Where US$${totalSpendFormatted}<br>went.</div>
-        <div class="lab" style="position:absolute;left:20px;top:154px;font-size:9.5px;color:#C9C5BA">${totalTxCount} PURCHASES STACKED BY CATEGORY</div>
+        <div class="lab" style="position:absolute;left:20px;top:154px;font-size:9.5px;color:var(--muted-bone)">${totalTxCount} PURCHASES STACKED BY CATEGORY</div>
         <div style="position:absolute;left:0;top:186px;width:390px;bottom:0;display:flex;flex-direction:column;gap:5px">
           ${topCats
             .map((cat) => {
@@ -675,7 +675,7 @@ export function mountDesignPrototype(
         <div class="lab" style="right:20px;top:16px">DAY 365 / 365</div>
         <div class="num" style="position:absolute;left:16px;bottom:14px;font-size:78px"><sup>US$</sup>${totalSpendFormatted}</div>
       </div>
-      <div class="lab" style="left:20px;top:284px;font-size:9px;color:#C9C5BA">M T W T F S S · 53 WEEKS</div>
+      <div class="lab" style="left:20px;top:284px;font-size:9px;color:var(--muted-bone)">M T W T F S S · 53 WEEKS</div>
       <canvas id="ph-grid" width="104" height="534" style="position:absolute;left:20px;top:302px;width:104px;height:534px"></canvas>
       <div class="blk" style="left:134px;top:280px;width:256px;height:182px;background:var(--c2);color:var(--ink)">
         <div class="lab" style="left:18px;top:16px">PURCHASES</div>
@@ -798,7 +798,7 @@ export function mountDesignPrototype(
       const ttl = chapters[0]!.o.querySelector<HTMLElement>('#ttl');
       if (ttl) {
         engine.computeTitlePoints(ttl);
-        gsap.set(ttl, { opacity: 1, color: '#1C1C1B' });
+        gsap.set(ttl, { opacity: 1, color: CORE_COLORS.ghostOnInk });
       }
       engine.daysVisible = true;
       engine.setGrid(GRID_PRESETS.opener, { instant: true });
@@ -881,7 +881,7 @@ export function mountDesignPrototype(
 
       const remapRects = Array.from(chapters[1]!.o.querySelectorAll<SVGRectElement>('.remap-bar'));
       remapRects.forEach((r, col) => {
-        r.setAttribute('fill', col <= cutDayView.col ? CORE_COLORS.bone : '#3A3A38');
+        r.setAttribute('fill', col <= cutDayView.col ? CORE_COLORS.bone : CORE_COLORS.ruleDark);
       });
 
       engine.renderFrame(0, 10);

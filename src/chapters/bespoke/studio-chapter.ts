@@ -378,28 +378,28 @@ export class StudioChapter implements ChapterModule {
 
     const badgeDisplayStyle = badgeText ? 'inline-flex' : 'none';
     const takeawayPrefixHtml = takeawayPrefix
-      ? `<span style="font-family:'JetBrains Mono',monospace;font-size:${isPhone ? '9px' : '10.5px'};font-weight:700;letter-spacing:${isPhone ? '0.1em' : '0.12em'};color:#F4F03A;text-transform:uppercase;margin-right:${isPhone ? '6px' : '8px'};">${takeawayPrefix}</span>`
+      ? `<span style="font-family:'JetBrains Mono',monospace;font-size:${isPhone ? '9px' : '10.5px'};font-weight:700;letter-spacing:${isPhone ? '0.1em' : '0.12em'};color:#F0C454;text-transform:uppercase;margin-right:${isPhone ? '6px' : '8px'};">${takeawayPrefix}</span>`
       : '';
 
     if (isPhone) {
       container.innerHTML = `
         <div class="studio-phone-stage" data-testid="studio-chapter-stage" data-viewport="phone" style="position:relative;width:390px;height:844px;overflow:hidden;">
           <div class="tx" style="position:absolute;left:16px;top:36px;right:16px;display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <span class="badge-bespoke" data-testid="bespoke-badge" style="display:${badgeDisplayStyle};align-items:center;gap:6px;padding:4px 8px;background:#111111;color:#F4F03A;border:1.5px solid #F4F03A;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;">${this.escapeHtml(badgeText)}</span>
-            <span class="lab" style="position:static;font-size:10px;color:#C9C5BA;">${this.escapeHtml(kickerText)}</span>
+            <span class="badge-bespoke" data-testid="bespoke-badge" style="display:${badgeDisplayStyle};align-items:center;gap:6px;padding:4px 8px;background:#0B111E;color:#F0C454;border:1.5px solid #F0C454;font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;">${this.escapeHtml(badgeText)}</span>
+            <span class="lab" style="position:static;font-size:10px;color:#94A3B8;">${this.escapeHtml(kickerText)}</span>
           </div>
 
           <div class="ch-header-stack" style="left:16px;right:16px;top:60px;max-height:126px;gap:6px;">
             <div class="split tx" data-testid="chapter-headline" style="width:358px;font-size:24px;font-weight:300;letter-spacing:-0.04em;line-height:1.05;color:var(--bone);">${this.escapeHtml(headlineText)}</div>
-            <div class="tx" data-testid="chapter-body" style="width:358px;padding:6px 10px;background:#1C1C1B;border-left:3px solid #FF5A14;font-family:'Space Grotesk',sans-serif;font-size:11.5px;line-height:1.3;color:var(--bone);">
+            <div class="tx" data-testid="chapter-body" style="width:358px;padding:6px 10px;background:#141D2F;border-left:3px solid #FF7A5C;font-family:'Space Grotesk',sans-serif;font-size:11.5px;line-height:1.3;color:var(--bone);">
               ${takeawayPrefixHtml}${this.escapeHtml(bodyText)}
             </div>
           </div>
 
-          <div class="blk ia" data-ax="b" id="studio-blueprint-blk" data-testid="studio-blueprint-block" style="position:absolute;left:16px;top:194px;width:358px;height:182px;background:#1C1C1B;color:var(--bone);border:1.5px solid #3A3A38;transform-origin:50% 100%;pointer-events:auto;">
+          <div class="blk ia" data-ax="b" id="studio-blueprint-blk" data-testid="studio-blueprint-block" style="position:absolute;left:16px;top:194px;width:358px;height:182px;background:#141D2F;color:var(--bone);border:1.5px solid #26334D;transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:14px;top:10px;right:14px;font-size:9.5px;display:flex;justify-content:space-between;align-items:center;">
               <span>${isSam ? 'ACOUSTIC BUILD TIMELINE · MAY–AUG' : `${this.escapeHtml(focusCategoryLabel)} TIMELINE · ${MONTH_LABELS[firstActiveMonth]}–${MONTH_LABELS[lastActiveMonth]}`}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalWithGearFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 6px;border:1px solid #F4F03A;color:#F4F03A;background:#111;cursor:pointer;">Receipts (${totalWithGearFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalWithGearFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 6px;border:1px solid #F0C454;color:#F0C454;background:var(--ink);cursor:pointer;">Receipts (${totalWithGearFact.txn_ids.length})</button>
             </div>
             <div class="dt" style="position:absolute;left:14px;top:38px;width:326px;height:130px;">${blueprintSvg}</div>
           </div>
@@ -407,7 +407,7 @@ export class StudioChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="studio-block-build" style="position:absolute;left:16px;top:386px;width:174px;height:126px;background:var(--c1);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:12px;top:10px;right:10px;font-size:9px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blk0Title}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(buildSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid #111;cursor:pointer;">Receipts (${buildSpendFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(buildSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid var(--ink);cursor:pointer;">Receipts (${buildSpendFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:12px;top:42px;font-size:40px;">${buildNum.hasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(buildNum.rawDigits)}">${this.escapeHtml(buildNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:12px;bottom:10px;font-size:8.5px;">${isSam ? `DEP ${this.escapeHtml(depositFact.formatted)} · FIN ${this.escapeHtml(finalFact.formatted)}` : `${MONTH_LABELS[secondPeakMonth]} ${this.escapeHtml(depositFact.formatted)} · ${MONTH_LABELS[peakMonth]} ${this.escapeHtml(finalFact.formatted)}`}</div>
@@ -416,7 +416,7 @@ export class StudioChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="studio-block-total-gear" style="position:absolute;left:200px;top:386px;width:174px;height:126px;background:var(--c4);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:12px;top:10px;right:10px;font-size:9px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blk1TitlePhone}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalWithGearFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid #111;cursor:pointer;">Receipts (${totalWithGearFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalWithGearFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid var(--ink);cursor:pointer;">Receipts (${totalWithGearFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:12px;top:42px;font-size:40px;">${totalGearNum.hasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(totalGearNum.rawDigits)}">${this.escapeHtml(totalGearNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:12px;bottom:10px;font-size:8.5px;">${isSam ? `SYNTH ${this.escapeHtml(synthFact.formatted)} INCLUDED` : `${this.escapeHtml(synthFact.formatted)} MILESTONE INCLUDED`}</div>
@@ -425,7 +425,7 @@ export class StudioChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="studio-block-final" style="position:absolute;left:16px;top:522px;width:174px;height:126px;background:var(--c2);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:12px;top:10px;right:10px;font-size:9px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blk2Title}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(finalFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid #111;cursor:pointer;">Receipts (${finalFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(finalFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid var(--ink);cursor:pointer;">Receipts (${finalFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:12px;top:44px;font-size:34px;">${finalNum.hasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(finalNum.rawDigits)}">${this.escapeHtml(finalNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:12px;bottom:10px;font-size:8.5px;">${isSam ? 'YEAR’S BIGGEST SINGLE BUY' : 'PEAK CHAPTER SETTLEMENT'}</div>
@@ -434,7 +434,7 @@ export class StudioChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="studio-block-gear-count" style="position:absolute;left:200px;top:522px;width:174px;height:126px;background:var(--lav);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:12px;top:10px;right:10px;font-size:9px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blk3Title}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(gearCountFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid #111;cursor:pointer;">Receipts (${gearCountFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(gearCountFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;padding:2px 5px;border:1px solid var(--ink);cursor:pointer;">Receipts (${gearCountFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:12px;top:40px;font-size:44px;"><span class="od" data-v="${this.escapeHtml(gearCountNum.rawDigits)}">${this.escapeHtml(gearCountNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:12px;bottom:10px;font-size:8.5px;">${isSam ? 'SWEETWATER · SYNTH · AUDIO' : this.escapeHtml(distinctMerchantsSummary.slice(0, 28))}</div>
@@ -443,7 +443,7 @@ export class StudioChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="studio-block-ledger" style="position:absolute;left:16px;top:658px;width:358px;height:152px;background:var(--bone);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:14px;top:10px;right:14px;font-size:9.5px;display:flex;justify-content:space-between;align-items:center;">
               <span>${isSam ? 'STUDIO BUILD LEDGER' : `${this.escapeHtml(focusCategoryLabel)} LEDGER`}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalWithGearFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 7px;background:#111;color:#F3F0E6;cursor:pointer;">All Receipts (${totalWithGearFact.txn_ids.length}) →</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalWithGearFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:9px;padding:3px 7px;background:var(--ink);color:var(--bone);cursor:pointer;">All Receipts (${totalWithGearFact.txn_ids.length}) →</button>
             </div>
             <div class="tx" style="position:absolute;left:14px;top:36px;right:14px;">${ledgerRowsHtml}</div>
           </div>
@@ -454,24 +454,24 @@ export class StudioChapter implements ChapterModule {
         <div class="studio-desktop-stage" data-testid="studio-chapter-stage" data-viewport="desktop" style="position:absolute;inset:0;">
           <div class="ch-header-stack" style="left:60px;top:64px;max-width:1030px;max-height:252px;">
             <div class="tx" style="display:flex;align-items:center;gap:16px;">
-              <span class="badge-bespoke" data-testid="bespoke-badge" style="display:${badgeDisplayStyle};align-items:center;gap:8px;padding:6px 12px;background:#111111;color:#F4F03A;border:1.5px solid #F4F03A;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;">${this.escapeHtml(badgeText)}</span>
-              <span class="lab" style="position:static;color:#C9C5BA;">${this.escapeHtml(kickerText)}</span>
+              <span class="badge-bespoke" data-testid="bespoke-badge" style="display:${badgeDisplayStyle};align-items:center;gap:8px;padding:6px 12px;background:#0B111E;color:#F0C454;border:1.5px solid #F0C454;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;">${this.escapeHtml(badgeText)}</span>
+              <span class="lab" style="position:static;color:#94A3B8;">${this.escapeHtml(kickerText)}</span>
             </div>
 
             <div class="split tx" data-testid="chapter-headline" style="font-size:58px;font-weight:300;letter-spacing:-0.04em;line-height:1.04;color:var(--bone);">${this.escapeHtml(headlineText)}</div>
-            <div class="tx" data-testid="chapter-body" style="padding:12px 18px;background:#1C1C1B;border:1px solid #3A3A38;border-left:4px solid #FF5A14;font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:400;line-height:1.35;color:var(--bone);">
+            <div class="tx" data-testid="chapter-body" style="padding:12px 18px;background:#141D2F;border:1px solid #26334D;border-left:4px solid #FF7A5C;font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:400;line-height:1.35;color:var(--bone);">
               ${takeawayPrefixHtml}${this.escapeHtml(bodyText)}
             </div>
           </div>
 
-          <div class="blk ia" data-ax="b" id="studio-blueprint-blk" data-testid="studio-blueprint-block" style="position:absolute;left:64px;top:330px;width:1040px;height:474px;background:#1C1C1B;color:var(--bone);border:1.5px solid #3A3A38;transform-origin:50% 100%;pointer-events:auto;">
+          <div class="blk ia" data-ax="b" id="studio-blueprint-blk" data-testid="studio-blueprint-block" style="position:absolute;left:64px;top:330px;width:1040px;height:474px;background:#141D2F;color:var(--bone);border:1.5px solid #26334D;transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:28px;top:22px;right:28px;display:flex;justify-content:space-between;align-items:center;">
               <span>${isSam ? `STUDIO SIGNAL &amp; ACOUSTIC BLUEPRINT TIMELINE · MAY DEPOSIT (${this.escapeHtml(depositFact.formatted)}) → AUG COMPLETION (${this.escapeHtml(finalFact.formatted)})` : `${this.escapeHtml(focusCategoryLabel)} SIGNAL &amp; DEPLOYMENT TIMELINE · ${MONTH_LABELS[secondPeakMonth]} (${this.escapeHtml(depositFact.formatted)}) → ${MONTH_LABELS[peakMonth]} PEAK (${this.escapeHtml(finalFact.formatted)})`}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalWithGearFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:5px 10px;border:1.5px solid #F4F03A;background:#111111;color:#F4F03A;cursor:pointer;">Receipts (${totalWithGearFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalWithGearFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:5px 10px;border:1.5px solid #F0C454;background:#0B111E;color:#F0C454;cursor:pointer;">Receipts (${totalWithGearFact.txn_ids.length})</button>
             </div>
             <div class="dt" style="position:absolute;left:28px;top:64px;width:984px;height:244px;">${blueprintSvg}</div>
-            <div class="tx" style="position:absolute;left:28px;top:324px;right:28px;border-top:1px solid #3A3A38;padding-top:12px;">
-              <div class="lab" style="position:static;font-size:11px;color:#F4F03A;margin-bottom:6px;">${isSam ? 'KEY ACOUSTIC &amp; GEAR MILESTONES · VERIFIED TRANSACTIONS' : `KEY ${this.escapeHtml(focusCategoryLabel)} MILESTONES · ${isB2B ? 'LEDGER TRANSACTIONS' : 'VERIFIED TRANSACTIONS'}`}</div>
+            <div class="tx" style="position:absolute;left:28px;top:324px;right:28px;border-top:1px solid #26334D;padding-top:12px;">
+              <div class="lab" style="position:static;font-size:11px;color:#F0C454;margin-bottom:6px;">${isSam ? 'KEY ACOUSTIC &amp; GEAR MILESTONES · VERIFIED TRANSACTIONS' : `KEY ${this.escapeHtml(focusCategoryLabel)} MILESTONES · ${isB2B ? 'LEDGER TRANSACTIONS' : 'VERIFIED TRANSACTIONS'}`}</div>
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 28px;">
                 ${ledgerRowsHtml}
               </div>
@@ -481,7 +481,7 @@ export class StudioChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="studio-block-build" style="position:absolute;left:1128px;top:68px;width:356px;height:356px;background:var(--c1);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:26px;top:22px;right:22px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blk0Title}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(buildSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;">Receipts (${buildSpendFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(buildSpendFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;">Receipts (${buildSpendFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:22px;bottom:76px;font-size:102px;">${buildNum.hasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(buildNum.rawDigits)}">${this.escapeHtml(buildNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:26px;bottom:24px;right:22px;font-size:11px;">${isSam ? `MAY DEPOSIT ${this.escapeHtml(depositFact.formatted)} + AUG FINAL ${this.escapeHtml(finalFact.formatted)}` : `${MONTH_LABELS[secondPeakMonth]} ${this.escapeHtml(depositFact.formatted)} + ${MONTH_LABELS[peakMonth]} ${this.escapeHtml(finalFact.formatted)}`}</div>
@@ -490,7 +490,7 @@ export class StudioChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="studio-block-total-gear" style="position:absolute;left:1500px;top:68px;width:356px;height:356px;background:var(--c4);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:26px;top:22px;right:22px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blk1TitleDesktop}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalWithGearFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;">Receipts (${totalWithGearFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(totalWithGearFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;">Receipts (${totalWithGearFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:22px;bottom:76px;font-size:102px;">${totalGearNum.hasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(totalGearNum.rawDigits)}">${this.escapeHtml(totalGearNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:26px;bottom:24px;right:22px;font-size:11px;">${isSam ? `INCLUDES AUG SYNTH (${this.escapeHtml(synthFact.formatted)}) &amp; HARDWARE` : `INCLUDES ${this.escapeHtml(synthFact.formatted)} MILESTONE &amp; LEDGER`}</div>
@@ -499,7 +499,7 @@ export class StudioChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="studio-block-final" style="position:absolute;left:1128px;top:448px;width:356px;height:356px;background:var(--c2);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:26px;top:22px;right:22px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blk2Title}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(finalFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;">Receipts (${finalFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(finalFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;">Receipts (${finalFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:22px;bottom:76px;font-size:84px;">${finalNum.hasDollar ? `<sup>${currencySup}</sup>` : ''}<span class="od" data-v="${this.escapeHtml(finalNum.rawDigits)}">${this.escapeHtml(finalNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:26px;bottom:24px;right:22px;font-size:11px;">${isSam ? 'MONARCH ACOUSTIC COMPLETION · YEAR’S BIGGEST BUY' : `${this.escapeHtml(topMerchantLabel)} · PEAK SETTLEMENT`}</div>
@@ -508,7 +508,7 @@ export class StudioChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="studio-block-gear-count" style="position:absolute;left:1500px;top:448px;width:356px;height:356px;background:var(--lav);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:26px;top:22px;right:22px;display:flex;justify-content:space-between;align-items:center;">
               <span>${blk3Title}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(gearCountFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid #111;cursor:pointer;">Receipts (${gearCountFact.txn_ids.length})</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(gearCountFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:4px 8px;border:1px solid var(--ink);cursor:pointer;">Receipts (${gearCountFact.txn_ids.length})</button>
             </div>
             <div class="num tx" style="position:absolute;left:22px;bottom:76px;font-size:132px;"><span class="od" data-v="${this.escapeHtml(gearCountNum.rawDigits)}">${this.escapeHtml(gearCountNum.rawDigits)}</span></div>
             <div class="lab dt" style="position:absolute;left:26px;bottom:24px;right:22px;font-size:11px;">${isSam ? 'MONARCH ACOUSTIC · SWEETWATER · SYNTHYARD · MYVOLTS' : this.escapeHtml(distinctMerchantsSummary)}</div>
@@ -517,7 +517,7 @@ export class StudioChapter implements ChapterModule {
           <div class="blk ia" data-ax="b" data-testid="studio-block-synth" style="position:absolute;left:1128px;top:824px;width:728px;height:180px;background:var(--bone);color:var(--ink);transform-origin:50% 100%;pointer-events:auto;">
             <div class="lab tx" style="position:absolute;left:28px;top:20px;right:28px;display:flex;justify-content:space-between;align-items:center;">
               <span>${isSam ? `POST-BUILD CELEBRATION · FIRST SYNTH IN THE NEW ROOM (${this.escapeHtml(synthFact.formatted)})` : `DEPLOYMENT MILESTONE · ${this.escapeHtml(topMerchantLabel)} (${this.escapeHtml(synthFact.formatted)})`}</span>
-              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(synthFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 10px;background:#111111;color:#F3F0E6;cursor:pointer;">${isSam ? 'Synth Receipt' : 'Milestone Receipt'} (${synthFact.txn_ids.length}) →</button>
+              <button type="button" class="receipt-trigger" data-fact-id="${this.escapeHtml(synthFact.id)}" style="font-family:'JetBrains Mono',monospace;font-size:10px;padding:5px 10px;background:#0B111E;color:#F8FAFC;cursor:pointer;">${isSam ? 'Synth Receipt' : 'Milestone Receipt'} (${synthFact.txn_ids.length}) →</button>
             </div>
             <div class="tx" style="position:absolute;left:28px;top:62px;right:28px;display:flex;justify-content:space-between;align-items:baseline;">
               <div style="font-size:22px;font-weight:400;max-width:480px;line-height:1.3;">
@@ -580,14 +580,14 @@ export class StudioChapter implements ChapterModule {
     const gridLines = [0, 0.25, 0.5, 0.75, 1]
       .map((r) => {
         const y = (padTop + plotH * (1 - r)).toFixed(1);
-        return `<line x1="${padLeft}" y1="${y}" x2="${width - padRight}" y2="${y}" stroke="#2E2E2C" stroke-width="1" stroke-dasharray="${r === 0 ? 'none' : '3,3'}"/>`;
+        return `<line x1="${padLeft}" y1="${y}" x2="${width - padRight}" y2="${y}" stroke="#26334D" stroke-width="1" stroke-dasharray="${r === 0 ? 'none' : '3,3'}"/>`;
       })
       .join('');
 
     // Highlight active build/deployment zone
     const startX = padLeft + meta.firstActiveMonth * colStep;
     const endX = padLeft + (meta.lastActiveMonth + 1) * colStep;
-    const buildZoneRect = `<rect x="${startX.toFixed(1)}" y="${padTop - 8}" width="${Math.max(colStep, endX - startX).toFixed(1)}" height="${(plotH + 8).toFixed(1)}" fill="#F4F03A" fill-opacity="0.07" stroke="#F4F03A" stroke-width="1" stroke-dasharray="4,4"/>`;
+    const buildZoneRect = `<rect x="${startX.toFixed(1)}" y="${padTop - 8}" width="${Math.max(colStep, endX - startX).toFixed(1)}" height="${(plotH + 8).toFixed(1)}" fill="#F0C454" fill-opacity="0.07" stroke="#F0C454" stroke-width="1" stroke-dasharray="4,4"/>`;
 
     // Signal polyline connecting monthly activity
     const pts: Array<[number, number]> = [];
@@ -605,13 +605,13 @@ export class StudioChapter implements ChapterModule {
 
       const isSecondPeak = m === meta.secondPeakMonth;
       const isPeak = m === meta.peakMonth;
-      const fill = isPeak ? '#FF5A14' : isSecondPeak ? '#F4F03A' : cnt > 0 ? '#A9A2E0' : '#3A3A38';
+      const fill = isPeak ? '#FF7A5C' : isSecondPeak ? '#F0C454' : cnt > 0 ? '#A5B4FC' : '#26334D';
 
       barsSvg += `<rect class="studio-signal-bar" data-month="${MONTH_LABELS[m]}" x="${bx.toFixed(1)}" y="${by.toFixed(1)}" width="${barW.toFixed(1)}" height="${bh.toFixed(1)}" fill="${fill}"/>`;
-      barsSvg += `<text x="${cx.toFixed(1)}" y="${height - 8}" fill="#C9C5BA" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle">${MONTH_LABELS[m]}</text>`;
+      barsSvg += `<text x="${cx.toFixed(1)}" y="${height - 8}" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="middle">${MONTH_LABELS[m]}</text>`;
 
       if (cnt > 0) {
-        barsSvg += `<circle cx="${cx.toFixed(1)}" cy="${by.toFixed(1)}" r="4" fill="#F3F0E6" stroke="#111111" stroke-width="1.5"/>`;
+        barsSvg += `<circle cx="${cx.toFixed(1)}" cy="${by.toFixed(1)}" r="4" fill="#F8FAFC" stroke="#0B111E" stroke-width="1.5"/>`;
       }
     }
 
@@ -650,11 +650,11 @@ export class StudioChapter implements ChapterModule {
 
     const calloutsSvg = `
       <g class="blueprint-callouts">
-        <rect x="${secRectX.toFixed(1)}" y="${(secY - 12).toFixed(1)}" width="${secW}" height="17" rx="2" fill="#111111" opacity="0.92"/>
-        <text x="${(secRectX + secW / 2).toFixed(1)}" y="${secY.toFixed(1)}" fill="#F4F03A" font-family="JetBrains Mono, monospace" font-size="${width > 400 ? '10' : '8.5'}" font-weight="600" text-anchor="middle">${secCalloutText}</text>
-        <rect x="${peakRectX.toFixed(1)}" y="${(peakY - 12).toFixed(1)}" width="${peakW}" height="17" rx="2" fill="#111111" opacity="0.92"/>
-        <text x="${(peakRectX + peakW / 2).toFixed(1)}" y="${peakY.toFixed(1)}" fill="#FF5A14" font-family="JetBrains Mono, monospace" font-size="${width > 400 ? '10' : '8.5'}" font-weight="600" text-anchor="middle">${peakCalloutText}</text>
-        ${width > 400 ? `<text x="${width - padRight}" y="16" fill="#A9A2E0" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="end">${acquisitionsLabel}</text>` : ''}
+        <rect x="${secRectX.toFixed(1)}" y="${(secY - 12).toFixed(1)}" width="${secW}" height="17" rx="2" fill="#0B111E" opacity="0.92"/>
+        <text x="${(secRectX + secW / 2).toFixed(1)}" y="${secY.toFixed(1)}" fill="#F0C454" font-family="JetBrains Mono, monospace" font-size="${width > 400 ? '10' : '8.5'}" font-weight="600" text-anchor="middle">${secCalloutText}</text>
+        <rect x="${peakRectX.toFixed(1)}" y="${(peakY - 12).toFixed(1)}" width="${peakW}" height="17" rx="2" fill="#0B111E" opacity="0.92"/>
+        <text x="${(peakRectX + peakW / 2).toFixed(1)}" y="${peakY.toFixed(1)}" fill="#FF7A5C" font-family="JetBrains Mono, monospace" font-size="${width > 400 ? '10' : '8.5'}" font-weight="600" text-anchor="middle">${peakCalloutText}</text>
+        ${width > 400 ? `<text x="${width - padRight}" y="16" fill="#A5B4FC" font-family="JetBrains Mono, monospace" font-size="10" text-anchor="end">${acquisitionsLabel}</text>` : ''}
       </g>
     `;
 
@@ -662,7 +662,7 @@ export class StudioChapter implements ChapterModule {
       <svg data-testid="studio-blueprint-svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg" style="display:block;overflow:visible;">
         ${gridLines}
         ${buildZoneRect}
-        <path class="studio-signal-wave" d="${signalPathD}" fill="none" stroke="#F4F03A" stroke-width="2" stroke-linejoin="round"/>
+        <path class="studio-signal-wave" d="${signalPathD}" fill="none" stroke="#F0C454" stroke-width="2" stroke-linejoin="round"/>
         ${barsSvg}
         ${calloutsSvg}
       </svg>
@@ -679,7 +679,7 @@ export class StudioChapter implements ChapterModule {
       grid.hideAllParticles();
       const preset = this.ctx.viewport === 'phone' ? GRID_PRESETS.phone : GRID_PRESETS.mini;
       grid.setGridGeometry(preset, { dur: rm ? 0 : 0.45, instant: rm });
-      const emberRgb = hexToRgb('#FF5A14');
+      const emberRgb = hexToRgb('#FF7A5C');
       const solarRgb = RGB_PALETTE.c1;
 
       grid.days.forEach((v) => {

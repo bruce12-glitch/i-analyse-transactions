@@ -79,12 +79,12 @@ export class ShareExporter {
     const topVisitsFact = facts.get('visits_top_merchant');
     const paydayCountFact = facts.get('payday_count');
 
-    // 1. Base Ink Canvas
-    ctx.fillStyle = '#111111';
+    // 1. Base Midnight Obsidian Canvas
+    ctx.fillStyle = '#0B111E';
     ctx.fillRect(0, 0, width, height);
 
     // 2. Top Header Strip
-    ctx.fillStyle = '#F3F0E6';
+    ctx.fillStyle = '#F8FAFC';
     ctx.font = '500 20px "JetBrains Mono", monospace';
     const rawRightTag = chapter?.params.kicker?.toUpperCase() ?? 'YEAR SUMMARY POSTER';
     const rightTag = this.truncateTextToWidth(ctx, rawRightTag, Math.floor(width * 0.42));
@@ -96,23 +96,23 @@ export class ShareExporter {
     const maxLeftHeaderW = Math.max(240, width - 112 - tagWidth - 28);
     ctx.fillText(this.truncateTextToWidth(ctx, rawLeftHeader, maxLeftHeaderW), 56, 62);
 
-    // 3. Primary Hero Yellow Block
+    // 3. Primary Hero Sovereign Gold Block
     const heroY = 92;
     const heroH = isTall ? 520 : 390;
-    ctx.fillStyle = '#F4F03A';
+    ctx.fillStyle = '#F0C454';
     ctx.fillRect(48, heroY, width - 96, heroH);
 
-    // Giant cropped ghost year inside yellow block
+    // Giant cropped ghost year inside hero block
     ctx.save();
     ctx.beginPath();
     ctx.rect(48, heroY, width - 96, heroH);
     ctx.clip();
-    ctx.fillStyle = 'rgba(17, 17, 17, 0.08)';
+    ctx.fillStyle = 'rgba(11, 17, 30, 0.08)';
     ctx.font = '300 340px "Inter Tight", sans-serif';
     ctx.fillText(yearStr, width - 560, heroY + heroH - 10);
     ctx.restore();
 
-    ctx.fillStyle = '#111111';
+    ctx.fillStyle = '#0B111E';
     ctx.font = '500 18px "JetBrains Mono", monospace';
     const heroKicker =
       chapter && chapter.type !== 'share_card'
@@ -163,10 +163,10 @@ export class ShareExporter {
     const currencySym = plan.business_meta?.currency_symbol ?? 'US$';
     const rawSpendFormatted = (totalSpendFact?.formatted ?? '$0').replace(/^(US\$|\$)/, '');
 
-    // Block 1: Orange (Total Spend)
-    ctx.fillStyle = '#FF5A14';
+    // Block 1: Burnished Coral (Total Spend)
+    ctx.fillStyle = '#FF7A5C';
     ctx.fillRect(48, rowY, colW, rowH);
-    ctx.fillStyle = '#111111';
+    ctx.fillStyle = '#0B111E';
     ctx.font = '500 16px "JetBrains Mono", monospace';
     ctx.fillText(
       this.truncateTextToWidth(
@@ -189,11 +189,11 @@ export class ShareExporter {
       '"Inter Tight", sans-serif'
     );
 
-    // Block 2: Pink (Purchases / Movements)
+    // Block 2: Glacier Sky (Purchases / Movements)
     const col2X = 48 + colW + 16;
-    ctx.fillStyle = '#FFA8E4';
+    ctx.fillStyle = '#7DD3FC';
     ctx.fillRect(col2X, rowY, colW, rowH);
-    ctx.fillStyle = '#111111';
+    ctx.fillStyle = '#0B111E';
     ctx.font = '500 16px "JetBrains Mono", monospace';
     ctx.fillText(
       this.truncateTextToWidth(ctx, (totalTxnsFact?.label ?? 'PURCHASES').toUpperCase(), colW - 44),
@@ -212,11 +212,11 @@ export class ShareExporter {
       '"Inter Tight", sans-serif'
     );
 
-    // Block 3: Lavender (Top Place & Visits)
+    // Block 3: Periwinkle Indigo (Top Place & Visits)
     const col3X = col2X + colW + 16;
-    ctx.fillStyle = '#A9A2E0';
+    ctx.fillStyle = '#A5B4FC';
     ctx.fillRect(col3X, rowY, colW, rowH);
-    ctx.fillStyle = '#111111';
+    ctx.fillStyle = '#0B111E';
     ctx.font = '500 16px "JetBrains Mono", monospace';
     const topLabelPrefix = plan.business_meta ? 'TOP VENDOR' : 'TOP RITUAL';
     ctx.fillText(
@@ -243,13 +243,13 @@ export class ShareExporter {
     // 5. 53x7 Year Grid Block
     const gridBlockY = rowY + rowH + 16;
     const gridBlockH = isTall ? 740 : 470;
-    ctx.fillStyle = '#191918';
+    ctx.fillStyle = '#141D2F';
     ctx.fillRect(48, gridBlockY, width - 96, gridBlockH);
-    ctx.strokeStyle = '#3A3A38';
+    ctx.strokeStyle = '#26334D';
     ctx.lineWidth = 2;
     ctx.strokeRect(48, gridBlockY, width - 96, gridBlockH);
 
-    ctx.fillStyle = '#F3F0E6';
+    ctx.fillStyle = '#F8FAFC';
     ctx.font = '500 16px "JetBrains Mono", monospace';
     const milestoneBase = plan.business_meta?.milestone_label?.trim().toUpperCase();
     const milestonePlural = milestoneBase
@@ -257,7 +257,7 @@ export class ShareExporter {
         ? milestoneBase
         : `${milestoneBase}S`
       : 'PAYDAYS';
-    const gridHeaderText = `${days.length} DAYS OF ${yearStr} · ${paydayCountFact?.formatted ?? '12'} ${milestonePlural} IN ORANGE`;
+    const gridHeaderText = `${days.length} DAYS OF ${yearStr} · ${paydayCountFact?.formatted ?? '12'} ${milestonePlural} IN CORAL`;
     ctx.fillText(this.truncateTextToWidth(ctx, gridHeaderText, width - 168), 84, gridBlockY + 46);
 
     const spends = days
@@ -276,14 +276,14 @@ export class ShareExporter {
       const gy = gridStartY + d.weekday * (gridPitch + (isTall ? 8 : 3));
       const ratio = Math.min(1, Math.sqrt(Math.max(0, d.discretionary_out_minor) / p97));
       const bucket = ratio < 0.14 ? 0 : ratio < 0.36 ? 1 : ratio < 0.6 ? 2 : ratio < 0.82 ? 3 : 4;
-      const rgb = d.is_payday ? [255, 90, 20] : (SPEND_STEPS_RGB[bucket] ?? [44, 44, 42]);
+      const rgb = d.is_payday ? [255, 122, 92] : (SPEND_STEPS_RGB[bucket] ?? [23, 34, 54]);
       ctx.fillStyle = `rgb(${rgb[0] | 0},${rgb[1] | 0},${rgb[2] | 0})`;
       ctx.fillRect(gx, gy, cellSize, cellSize + (isTall ? 5 : 0));
     });
 
     // Legend & Footer inside Grid Block
     const footerY = gridBlockY + gridBlockH - 36;
-    ctx.fillStyle = '#C9C5BA';
+    ctx.fillStyle = '#94A3B8';
     ctx.font = '500 14px "JetBrains Mono", monospace';
     const leftLegend = '1 SQUARE = 1 DAY · MONDAY ON TOP · BRIGHTER = LOUDER';
     ctx.fillText(leftLegend, 84, footerY);
